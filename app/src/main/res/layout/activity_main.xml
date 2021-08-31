@@ -33,6 +33,12 @@
             android:text="@string/setup_with_view_pager" />
 
         <Button
+            android:id="@+id/btn_setup_with_view_pager2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setup_with_view_pager2" />
+
+        <Button
             android:id="@+id/btn_badge_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -10,17 +10,17 @@
         android:layout_height="match_parent"
         tools:context=".features.viewpager.WithViewPagerActivity">
 
-        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        <com.yh.bottomnavigationex.BottomNavigationViewEx
             android:id="@+id/bnve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
+            android:background="@color/purple_700"
             app:itemIconTint="@color/selector_item_gray_color"
             app:itemTextColor="@color/selector_item_gray_color"
             app:menu="@menu/menu_navigation_with_view_pager" />
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -5,14 +5,15 @@ import java.util.zip.ZipFile
 
 object Utils {
 
-    @JvmStatic
-    fun init(ctx:Context){
-        appSourceDir = ctx.applicationInfo.sourceDir
-        println(materialVersion)
-    }
+    private var appSourceDir: String = ""
 
-    @JvmField
-    internal var appSourceDir: String = ""
+    @JvmStatic
+    fun init(ctx: Context) {
+        if(appSourceDir.isEmpty()) {
+            appSourceDir = ctx.applicationInfo.sourceDir
+            println(materialVersion)
+        }
+    }
 
     internal val materialVersion: String? by lazy {
         if (appSourceDir.isEmpty()) {

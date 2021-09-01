@@ -72,6 +72,6 @@ dependencies {
 //    implementation(project(mapOf("path" to ":lib_bottomnavigation_130")))
 //    implementation(project(mapOf("path" to ":lib_bottomnavigation_140")))
     implementation(AppConfig.ex)
-    implementation(AppConfig.ex_130)
-//    implementation(AppConfig.ex_140)
+//    implementation(AppConfig.ex_130)
+    implementation(AppConfig.ex_140)
 }

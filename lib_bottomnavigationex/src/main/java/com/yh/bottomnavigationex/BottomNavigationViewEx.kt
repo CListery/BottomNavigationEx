@@ -35,6 +35,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         attrs,
         defStyleAttr
     ) {
+        Utils.init(context)
         iBottomNavigationEx = when (Utils.materialVersion) {
             "1.4.0" -> BottomNavigationViewV140(context, attrs, defStyleAttr)
             else -> BottomNavigationViewV130(context, attrs, defStyleAttr)

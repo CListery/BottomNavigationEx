@@ -3,7 +3,11 @@ package com.clistery.src
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object AppDependencies {
-    
+
+    object clistery{
+        const val appinject = "io.github.clistery:appinject:1.4.4"
+    }
+
     object kotlin {
         
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${AppVersion.kotlin.version}"

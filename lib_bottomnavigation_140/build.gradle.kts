@@ -1,4 +1,5 @@
 import com.clistery.src.AppConfig
+import com.clistery.src.AppDependencies
 
 plugins {
     id("com.android.library")
@@ -38,7 +39,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
-    implementation("io.github.clistery:appinject:1.4.4")
+    compileOnly(AppDependencies.clistery.appinject)
 //    api(project(mapOf("path" to ":lib_bottomnavigation_base")))
     api(AppConfig.base)
     api("com.google.android.material:material:1.4.0")

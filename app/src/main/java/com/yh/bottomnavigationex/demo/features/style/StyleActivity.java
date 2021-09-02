@@ -5,16 +5,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.yh.bottomnavigation_base.IListener;
+import com.yh.bottomnavigation_base.AbsMenuListener;
+import com.yh.bottomnavigation_base.IMenuListener;
 import com.yh.bottomnavigationex.BottomNavigationViewEx;
 import com.yh.bottomnavigationex.demo.R;
 import com.yh.bottomnavigationex.demo.common.base.BaseApplication;
 import com.yh.bottomnavigationex.demo.databinding.ActivityStyleBinding;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StyleActivity extends AppCompatActivity {
     private ActivityStyleBinding bind;
@@ -99,15 +104,16 @@ public class StyleActivity extends AppCompatActivity {
         bind.bnveCenterIconOnly.setItemBackground(centerPosition, R.color.colorGreen);
         bind.bnveCenterIconOnly.setIconTintList(centerPosition, getResources().getColorStateList(R.color.selector_item_gray_color));
         bind.bnveCenterIconOnly.setIconMarginTop(centerPosition, BaseApplication.dp2px(this, 4));
+        List<Integer> emptyIds = new ArrayList<>();
+        emptyIds.add(R.id.menu_add);
+        bind.bnveCenterIconOnly.setEmptyMenuIds(emptyIds);
         // you could set a listener for bnve. and return false when click the center item so that it won't be checked.
-        bind.bnveCenterIconOnly.setListener(new IListener() {
+        bind.bnveCenterIconOnly.setMenuListener(new AbsMenuListener() {
             @Override
-            public boolean onNavigationItemSelected(int position, @NotNull MenuItem menu, boolean isReSelected) {
+            public void onEmptyItemClick(int position, @NonNull MenuItem menu) {
                 if (menu.getItemId() == R.id.menu_add) {
                     Toast.makeText(StyleActivity.this, "add", Toast.LENGTH_SHORT).show();
-                    return false;
                 }
-                return true;
             }
         });
     }
@@ -159,7 +165,7 @@ public class StyleActivity extends AppCompatActivity {
                 .getColorStateList(R.color.colorGray));
         bind.bnveUncheckedFirstTime.setTextTintList(0, getResources()
                 .getColorStateList(R.color.colorGray));
-        bind.bnveUncheckedFirstTime.setListener(new IListener() {
+        bind.bnveUncheckedFirstTime.setMenuListener(new IMenuListener() {
             private boolean firstClick = true;
 
             @Override

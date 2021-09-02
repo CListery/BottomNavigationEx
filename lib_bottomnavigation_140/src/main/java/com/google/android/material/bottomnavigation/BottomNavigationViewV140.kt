@@ -20,7 +20,7 @@ import com.google.android.material.navigation.NavigationBarMenuView
 import com.kotlin.safeFieldGet
 import com.kotlin.safeFieldSet
 import com.yh.bottomnavigation_base.IBottomNavigationEx
-import com.yh.bottomnavigation_base.IListener
+import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.helper.BNVHelper
 import com.yh.bottomnavigation_base.helper.VP2Helper
 import com.yh.bottomnavigation_base.helper.VPHelper
@@ -275,12 +275,12 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return this
     }
 
-    override fun getListener(): IListener? {
+    override fun getMenuListener(): IMenuListener? {
         return bnvHelper.getListener()
     }
 
-    override fun setListener(listener: IListener) {
-        bnvHelper.setListener(listener)
+    override fun setMenuListener(menuListener: IMenuListener) {
+        bnvHelper.setListener(menuListener)
     }
 
     override fun setInnerListener(listener: InnerListener) {

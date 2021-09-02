@@ -6,7 +6,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +23,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.internal.ThemeEnforcement;
 import com.yh.bottomnavigation_base.IBottomNavigationEx;
-import com.yh.bottomnavigation_base.IListener;
+import com.yh.bottomnavigation_base.IMenuListener;
 import com.yh.bottomnavigation_base.helper.BNVHelper;
 import com.yh.bottomnavigation_base.helper.VP2Helper;
 import com.yh.bottomnavigation_base.helper.VPHelper;
@@ -35,10 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
-import kotlin.io.ConsoleKt;
-import kotlin.jvm.functions.Function2;
 
 /**
  * Created by yu on 2016/11/10.
@@ -461,12 +457,12 @@ public class BottomNavigationViewV130 extends BottomNavigationView implements IB
 
     @Nullable
     @Override
-    public IListener getListener() {
+    public IMenuListener getMenuListener() {
         return bnvHelper.getListener();
     }
 
     @Override
-    public void setListener(@NonNull IListener listener) {
+    public void setMenuListener(@NonNull IMenuListener listener) {
         bnvHelper.setListener(listener);
     }
 

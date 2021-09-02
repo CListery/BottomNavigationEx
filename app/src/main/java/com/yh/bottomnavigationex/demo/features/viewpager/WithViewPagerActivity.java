@@ -1,23 +1,17 @@
 package com.yh.bottomnavigationex.demo.features.viewpager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.util.SparseIntArray;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
-import com.yh.bottomnavigation_base.IListener;
 import com.yh.bottomnavigationex.demo.R;
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment;
 import com.yh.bottomnavigationex.demo.databinding.ActivityWithViewPagerBinding;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

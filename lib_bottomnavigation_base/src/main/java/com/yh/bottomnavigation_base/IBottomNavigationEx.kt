@@ -20,8 +20,8 @@ interface IBottomNavigationEx<BNMV:View, BNIV:View> {
     fun getCurrentItem(): Int
     fun getMenuItemPosition(item: MenuItem): Int
     fun setCurrentItem(index: Int): IBottomNavigationEx<BNMV, BNIV>
-    fun getListener(): IListener?
-    fun setListener(listener: IListener)
+    fun getMenuListener(): IMenuListener?
+    fun setMenuListener(menuListener: IMenuListener)
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     fun setInnerListener(listener: InnerListener)
     fun getBottomNavigationMenuView(): BNMV

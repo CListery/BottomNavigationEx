@@ -3,8 +3,9 @@ package com.yh.bottomnavigation_base.helper
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.forEachIndexed
+import com.yh.bottomnavigation_base.AbsMenuListener
 import com.yh.bottomnavigation_base.IBottomNavigationEx
-import com.yh.bottomnavigation_base.IListener
+import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.internal.InnerListener
 import java.lang.ref.WeakReference
 
@@ -12,7 +13,7 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
 
     private val iBNERef = WeakReference(bottomNavigationEx)
     private var previousPosition: Int = -1
-    private var listener: IListener? = null
+    private var menuListener: IMenuListener? = null
 
     private var viewPagerHelper: AbsViewPagerHelper<*>? = null
     var emptyMenuIds: List<Int> = emptyList()
@@ -21,6 +22,7 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
         object : InnerListener {
             override fun onNavigationItemSelected(menu: Menu, item: MenuItem): Boolean {
                 if (emptyMenuIds.contains(item.itemId)) {
+                    (menuListener as? AbsMenuListener)?.onEmptyItemClick(menu.indexOf(item), item)
                     return false
                 }
 
@@ -29,7 +31,7 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
                     return true
                 }
 
-                val result = listener?.onNavigationItemSelected(position, item, false) ?: true
+                val result = menuListener?.onNavigationItemSelected(position, item, false) ?: true
                 if (!result) {
                     return false
                 }
@@ -47,7 +49,7 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
 
                 val position = menu.indexOf(item)
 
-                listener?.onNavigationItemSelected(position, item, false)
+                menuListener?.onNavigationItemSelected(position, item, false)
 
                 viewPagerHelper?.updatePosition(position - menu.filterEmptyMenuCount(item))
 
@@ -60,10 +62,10 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
         bottomNavigationEx.setInnerListener(innerListener)
     }
 
-    fun getListener() = listener
+    fun getListener() = menuListener
 
-    fun setListener(listener: IListener?) {
-        this.listener = listener
+    fun setListener(menuListener: IMenuListener?) {
+        this.menuListener = menuListener
     }
 
     fun setupViewPagerHelper(absViewPagerHelper: AbsViewPagerHelper<*>) {

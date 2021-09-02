@@ -1,14 +1,11 @@
 package com.yh.bottomnavigationex.demo.features.viewpager
 
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.yh.bottomnavigation_base.IListener
 import com.yh.bottomnavigationex.demo.R
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment
 import com.yh.bottomnavigationex.demo.databinding.ActivityWithViewPager2Binding

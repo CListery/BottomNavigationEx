@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.BottomNavigationViewV130
 import com.google.android.material.bottomnavigation.BottomNavigationViewV140
 import com.yh.bottomnavigation_base.IBottomNavigationEx
-import com.yh.bottomnavigation_base.IListener
+import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.internal.InnerListener
 
 class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
@@ -134,12 +134,12 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return this
     }
 
-    override fun getListener(): IListener? {
-        return iBottomNavigationEx.getListener()
+    override fun getMenuListener(): IMenuListener? {
+        return iBottomNavigationEx.getMenuListener()
     }
 
-    override fun setListener(listener: IListener) {
-        iBottomNavigationEx.setListener(listener)
+    override fun setMenuListener(menuListener: IMenuListener) {
+        iBottomNavigationEx.setMenuListener(menuListener)
     }
 
     override fun getBottomNavigationMenuView(): View {

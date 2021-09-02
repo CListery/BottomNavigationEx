@@ -2,8 +2,7 @@ package com.yh.bottomnavigationex.demo.features.setupwithviewpager;
 
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -11,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.yh.bottomnavigation_base.IListener;
+import com.yh.bottomnavigation_base.AbsMenuListener;
+import com.yh.bottomnavigation_base.IMenuListener;
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment;
 import com.yh.bottomnavigationex.demo.R;
 import com.yh.bottomnavigationex.demo.databinding.ActivityWithViewPagerBinding;
@@ -90,7 +90,7 @@ public class SetupWithViewPagerActivity extends AppCompatActivity {
      */
     private void initEvent() {
         // set listener to do something then item selected
-        bind.bnve.setListener(new IListener() {
+        bind.bnve.setMenuListener(new IMenuListener() {
             @Override
             public boolean onNavigationItemSelected(int position, @NotNull MenuItem menu, boolean isReSelected) {
                 Log.d(TAG, menu.getItemId() + " item was selected-------------------");

@@ -12,8 +12,12 @@ abstract class AbsMenuListener : IMenuListener {
         menu: MenuItem,
         isReSelected: Boolean
     ): Boolean {
-        return false
+        return true
     }
 
     abstract fun onEmptyItemClick(position: Int, menu: MenuItem)
+}
+
+interface IMenuDoubleClickListener {
+    fun onDoubleClick(position: Int, menu: MenuItem)
 }

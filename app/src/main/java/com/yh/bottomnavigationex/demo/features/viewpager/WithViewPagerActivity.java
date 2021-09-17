@@ -2,13 +2,17 @@ package com.yh.bottomnavigationex.demo.features.viewpager;
 
 import android.os.Bundle;
 import android.util.SparseIntArray;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener;
 import com.yh.bottomnavigationex.demo.R;
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment;
 import com.yh.bottomnavigationex.demo.databinding.ActivityWithViewPagerBinding;
@@ -40,7 +44,7 @@ public class WithViewPagerActivity extends AppCompatActivity {
      * change BottomNavigationViewEx style
      */
     private void initView() {
-        bind.bnve.enableItemShiftingMode(true);
+        bind.bnve.enableItemHorizontalTranslation(true);
         bind.bnve.enableAnimation(false);
     }
 
@@ -89,6 +93,12 @@ public class WithViewPagerActivity extends AppCompatActivity {
      */
     private void initEvent() {
         bind.bnve.setupWithViewPager(bind.vp);
+        bind.bnve.setMenuDoubleClickListener(new IMenuDoubleClickListener() {
+            @Override
+            public void onDoubleClick(int position, @NonNull MenuItem menu) {
+                Toast.makeText(WithViewPagerActivity.this, "double click: " + position + " " + menu.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**

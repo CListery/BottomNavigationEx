@@ -2,14 +2,19 @@ package com.yh.bottomnavigation_base.helper
 
 import android.view.Menu
 import android.view.MenuItem
-import androidx.core.view.forEachIndexed
 import com.yh.bottomnavigation_base.AbsMenuListener
 import com.yh.bottomnavigation_base.IBottomNavigationEx
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
+import com.yh.bottomnavigation_base.ext.emptyCountBeforeMenuItem
+import com.yh.bottomnavigation_base.ext.filterEmptyMenuIndex
+import com.yh.bottomnavigation_base.ext.indexOf
+import com.yh.bottomnavigation_base.ext.onDoubleClick
 import com.yh.bottomnavigation_base.internal.InnerListener
 import java.lang.ref.WeakReference
+import kotlin.concurrent.thread
 
-class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
+class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *, *>) {
 
     private val iBNERef = WeakReference(bottomNavigationEx)
     private var previousPosition: Int = -1
@@ -36,7 +41,12 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
                     return false
                 }
 
-                viewPagerHelper?.updatePosition(position - menu.filterEmptyMenuCount(item))
+                viewPagerHelper?.updatePosition(
+                    position - menu.emptyCountBeforeMenuItem(
+                        item,
+                        emptyMenuIds
+                    )
+                )
 
                 previousPosition = position
                 return true
@@ -51,7 +61,12 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
 
                 menuListener?.onNavigationItemSelected(position, item, false)
 
-                viewPagerHelper?.updatePosition(position - menu.filterEmptyMenuCount(item))
+                viewPagerHelper?.updatePosition(
+                    position - menu.emptyCountBeforeMenuItem(
+                        item,
+                        emptyMenuIds
+                    )
+                )
 
                 previousPosition = position
             }
@@ -73,7 +88,7 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
         viewPagerHelper = null
         viewPagerHelper = absViewPagerHelper
         viewPagerHelper?.setOnPageChangeCallback {
-            val menuList = iBNERef.get()?.getMenuList() ?: return@setOnPageChangeCallback
+            val menuList = iBNERef.get()?.getMenuItems() ?: return@setOnPageChangeCallback
 
             var position = it
             menuList.forEachIndexed { index, item ->
@@ -92,43 +107,23 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *>) {
         }
     }
 
-    /**
-     * 过滤 emptyMenuIds
-     */
-    fun Menu.filterEmptyMenuIndex(menuItem: MenuItem): Int {
-        return indexOf(menuItem) + filterEmptyMenuCount(menuItem)
-    }
-
-    fun Menu.indexOf(menuItem: MenuItem): Int {
-        forEachIndexed { index, item ->
-            if (item.itemId == menuItem.itemId) {
-                return index
-            }
-        }
-        return -1
-    }
-
-    private fun Menu.filterEmptyMenuCount(item: MenuItem): Int {
-        if (emptyMenuIds.isEmpty()) {
-            return 0
-        } else {
-            var count = 0
-            var index = indexOf(item)
-            forEachIndexed { i, m ->
-                if (i < index) {
-                    if (emptyMenuIds.contains(m.itemId)) {
-                        count++
+    fun setMenuDoubleClickListener(menuDoubleClickListener: IMenuDoubleClickListener) {
+        thread {
+            iBNERef.get()?.getAllBNItemView()?.runCatching {
+                this.forEachIndexed { index, item ->
+                    val menuItem = iBNERef.get()?.getMenuItems()?.getOrNull(index) ?: return@forEachIndexed
+                    if (emptyMenuIds.contains(menuItem.itemId)) {
+                        return@forEachIndexed
                     }
-                } else if (i == index) {
-                    if (emptyMenuIds.contains(m.itemId)) {
-                        count++
-                        index++
+                    val menu = iBNERef.get()?.getMenu() ?: return@forEachIndexed
+                    item.onDoubleClick {
+                        menuDoubleClickListener.onDoubleClick(
+                            menu.filterEmptyMenuIndex(menuItem, emptyMenuIds), menuItem
+                        )
                     }
-                } else {
-                    return count
                 }
             }
-            return count
         }
     }
+
 }

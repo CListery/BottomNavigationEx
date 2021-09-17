@@ -23,8 +23,8 @@ public class BadgeViewActivity extends AppCompatActivity {
     private void initView() {
         // disable all animations
         bind.bnve.enableAnimation(false);
-        bind.bnve.enableShiftingMode(false);
-        bind.bnve.enableItemShiftingMode(false);
+        bind.bnve.enableLabelVisibility(false);
+        bind.bnve.enableItemHorizontalTranslation(false);
 
         BadgeDrawable bd = bind.bnve.getRealView().getOrCreateBadge(R.id.i_friends);
         bd.setNumber(1);

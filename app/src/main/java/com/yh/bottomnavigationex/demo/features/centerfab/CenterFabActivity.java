@@ -1,15 +1,18 @@
 package com.yh.bottomnavigationex.demo.features.centerfab;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener;
 import com.yh.bottomnavigationex.demo.R;
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment;
 import com.yh.bottomnavigationex.demo.databinding.ActivityCenterFabBinding;
@@ -80,8 +83,8 @@ public class CenterFabActivity extends AppCompatActivity {
      * change BottomNavigationViewEx style
      */
     private void initView() {
-        bind.bnve.enableItemShiftingMode(false);
-        bind.bnve.enableShiftingMode(false);
+        bind.bnve.enableItemHorizontalTranslation(false);
+        bind.bnve.enableLabelVisibility(false);
         bind.bnve.enableAnimation(false);
 
         // set adapter
@@ -90,6 +93,12 @@ public class CenterFabActivity extends AppCompatActivity {
         bind.bnve.setEmptyMenuIds(new ArrayList<Integer>() {
             {
                 add(R.id.i_empty);
+            }
+        });
+        bind.bnve.setMenuDoubleClickListener(new IMenuDoubleClickListener() {
+            @Override
+            public void onDoubleClick(int position, @NonNull MenuItem menu) {
+                Toast.makeText(CenterFabActivity.this, "double click: " + position + " " + menu.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
     }

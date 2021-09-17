@@ -6,6 +6,7 @@ import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -13,17 +14,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomnavigation.BottomNavigationViewV130
-import com.google.android.material.bottomnavigation.BottomNavigationViewV140
+import com.google.android.material.bottomnavigation.*
 import com.yh.bottomnavigation_base.IBottomNavigationEx
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.internal.InnerListener
 
-class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
+class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView> {
 
     @Suppress("JoinDeclarationAndAssignment")
-    private var iBottomNavigationEx: IBottomNavigationEx<*, *>
+    private var iBottomNavigationEx: IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView>
     private var isLoaded: Boolean = false
 
     private val inflateRunnable = { inflate() }
@@ -47,8 +47,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         post { inflateRunnable }
     }
 
-    @Suppress("MemberVisibilityCanBePrivate")
-    val realView get() = iBottomNavigationEx as BottomNavigationView
+    override val realView: BottomNavigationView get() = iBottomNavigationEx as BottomNavigationView
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -106,27 +105,27 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return this
     }
 
-    override fun enableShiftingMode(enable: Boolean): BottomNavigationViewEx {
-        iBottomNavigationEx.enableShiftingMode(enable)
+    override fun enableLabelVisibility(enable: Boolean): BottomNavigationViewEx {
+        iBottomNavigationEx.enableLabelVisibility(enable)
         return this
     }
 
-    override fun enableShiftingMode(position: Int, enable: Boolean): BottomNavigationViewEx {
-        iBottomNavigationEx.enableShiftingMode(position, enable)
+    override fun enableBNItemViewLabelVisibility(position: Int, enable: Boolean): BottomNavigationViewEx {
+        iBottomNavigationEx.enableBNItemViewLabelVisibility(position, enable)
         return this
     }
 
-    override fun enableItemShiftingMode(enable: Boolean): BottomNavigationViewEx {
-        iBottomNavigationEx.enableShiftingMode(enable)
+    override fun enableItemHorizontalTranslation(enable: Boolean): BottomNavigationViewEx {
+        iBottomNavigationEx.enableLabelVisibility(enable)
         return this
     }
 
-    override fun getCurrentItem(): Int {
-        return iBottomNavigationEx.getCurrentItem()
+    override fun getCurrentIndex(): Int {
+        return iBottomNavigationEx.getCurrentIndex()
     }
 
-    override fun getMenuItemPosition(item: MenuItem): Int {
-        return iBottomNavigationEx.getMenuItemPosition(item)
+    override fun menuItemPositionAt(item: MenuItem): Int {
+        return iBottomNavigationEx.menuItemPositionAt(item)
     }
 
     override fun setCurrentItem(index: Int): BottomNavigationViewEx {
@@ -138,12 +137,18 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return iBottomNavigationEx.getMenuListener()
     }
 
-    override fun setMenuListener(menuListener: IMenuListener) {
+    override fun setMenuListener(menuListener: IMenuListener): BottomNavigationViewEx {
         iBottomNavigationEx.setMenuListener(menuListener)
+        return this
     }
 
-    override fun getBottomNavigationMenuView(): View {
-        return iBottomNavigationEx.getBottomNavigationMenuView()
+    override fun setMenuDoubleClickListener(menuDoubleClickListener: IMenuDoubleClickListener): BottomNavigationViewEx {
+        iBottomNavigationEx.setMenuDoubleClickListener(menuDoubleClickListener)
+        return this
+    }
+
+    override fun getBNMenuView(): BottomNavigationMenuView {
+        return iBottomNavigationEx.getBNMenuView()
     }
 
     override fun clearIconTintColor(): BottomNavigationViewEx {
@@ -151,12 +156,12 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return this
     }
 
-    override fun getBottomNavigationItemViews(): Array<View> {
-        return iBottomNavigationEx.getBottomNavigationItemViews().asList().toTypedArray()
+    override fun getAllBNItemView(): Array<BottomNavigationItemView> {
+        return iBottomNavigationEx.getAllBNItemView().asList().toTypedArray()
     }
 
-    override fun getBottomNavigationItemView(position: Int): View? {
-        return iBottomNavigationEx.getBottomNavigationItemView(position)
+    override fun getBNItemView(position: Int): BottomNavigationItemView? {
+        return iBottomNavigationEx.getBNItemView(position)
     }
 
     override fun getIconAt(position: Int): ImageView? {
@@ -171,8 +176,8 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return iBottomNavigationEx.getLargeLabelAt(position)
     }
 
-    override fun getItemCount(): Int {
-        return iBottomNavigationEx.getItemCount()
+    override fun getBNItemViewCount(): Int {
+        return iBottomNavigationEx.getBNItemViewCount()
     }
 
     override fun setSmallTextSize(sp: Float): BottomNavigationViewEx {
@@ -205,13 +210,13 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return this
     }
 
-    override fun setItemHeight(height: Int): BottomNavigationViewEx {
-        iBottomNavigationEx.setItemHeight(height)
+    override fun setBNMenuViewHeight(height: Int): BottomNavigationViewEx {
+        iBottomNavigationEx.setBNMenuViewHeight(height)
         return this
     }
 
-    override fun getItemHeight(): Int {
-        return iBottomNavigationEx.getItemHeight()
+    override fun getBNMenuViewHeight(): Int {
+        return iBottomNavigationEx.getBNMenuViewHeight()
     }
 
     override fun setTypeface(typeface: Typeface, style: Int): BottomNavigationViewEx {
@@ -250,12 +255,12 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return this
     }
 
-    override fun setItemBackground(position: Int, background: Int): BottomNavigationViewEx {
-        iBottomNavigationEx.setItemBackground(position, background)
+    override fun setBNItemViewBackgroundRes(position: Int, background: Int): BottomNavigationViewEx {
+        iBottomNavigationEx.setBNItemViewBackgroundRes(position, background)
         return this
     }
 
-    override fun setIconTintList(tint: ColorStateList?): IBottomNavigationEx<View, View> {
+    override fun setIconTintList(tint: ColorStateList?): BottomNavigationViewEx {
         iBottomNavigationEx.setIconTintList(tint)
         return this
     }
@@ -265,7 +270,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         return this
     }
 
-    override fun setTextTintList(tint: ColorStateList?): IBottomNavigationEx<View, View> {
+    override fun setTextTintList(tint: ColorStateList?): BottomNavigationViewEx {
         iBottomNavigationEx.setTextTintList(tint)
         return this
     }
@@ -289,12 +294,16 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<View, View> {
         throw IllegalStateException("can not call this")
     }
 
-    override fun setEmptyMenuIds(emptyMenuIds: List<Int>): IBottomNavigationEx<View, View> {
+    override fun setEmptyMenuIds(emptyMenuIds: List<Int>): BottomNavigationViewEx {
         iBottomNavigationEx.setEmptyMenuIds(emptyMenuIds)
         return this
     }
 
-    override fun getMenuList(): List<MenuItem> {
-        return iBottomNavigationEx.getMenuList()
+    override fun getMenuItems(): List<MenuItem> {
+        return iBottomNavigationEx.getMenuItems()
+    }
+
+    override fun getMenu(): Menu {
+        return iBottomNavigationEx.getMenu()
     }
 }

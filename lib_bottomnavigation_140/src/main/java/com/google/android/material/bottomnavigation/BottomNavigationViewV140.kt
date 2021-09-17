@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationBarMenuView
 import com.kotlin.safeFieldGet
 import com.kotlin.safeFieldSet
 import com.yh.bottomnavigation_base.IBottomNavigationEx
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.helper.BNVHelper
 import com.yh.bottomnavigation_base.helper.VP2Helper
@@ -29,7 +30,7 @@ import kotlin.math.ceil
 
 @SuppressLint("RestrictedApi")
 class BottomNavigationViewV140 : BottomNavigationView,
-    IBottomNavigationEx<BottomNavigationMenuView, BottomNavigationItemView> {
+    IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView> {
 
     // used for animation
     private var labelSizeRecord = false
@@ -83,6 +84,8 @@ class BottomNavigationViewV140 : BottomNavigationView,
         }
     }
 
+    override val realView: BottomNavigationView get() = this
+
     override fun setIconVisibility(visibility: Boolean): BottomNavigationViewV140 {
         for (b in theBottomNavigationItemViews) {
             val icon: ImageView? = getButtonField(b, "icon")
@@ -95,21 +98,21 @@ class BottomNavigationViewV140 : BottomNavigationView,
         if (!visibility) {
             if (!visibilityHeightRecord) {
                 visibilityHeightRecord = true
-                itemHeight = getItemHeight()
+                itemHeight = getBNMenuViewHeight()
             }
 
             val button = theBottomNavigationItemViews.firstOrNull()
             if (null != button) {
                 val icon: ImageView? = getButtonField(button, "icon")
                 icon?.post {
-                    setItemHeight(itemHeight - icon.measuredHeight)
+                    setBNMenuViewHeight(itemHeight - icon.measuredHeight)
                 }
             }
         } else {
             if (!visibilityHeightRecord) {
                 return this
             }
-            setItemHeight(itemHeight)
+            setBNMenuViewHeight(itemHeight)
         }
         return this
     }
@@ -151,17 +154,17 @@ class BottomNavigationViewV140 : BottomNavigationView,
                 return this
             }
             // restore mItemHeight
-            setItemHeight(itemHeight)
+            setBNMenuViewHeight(itemHeight)
         } else {
             // if not record mItemHeight
             if (!visibilityHeightRecord) {
-                itemHeight = getItemHeight()
+                itemHeight = getBNMenuViewHeight()
                 visibilityHeightRecord = true
             }
 
             // change mItemHeight to only icon size in menuView
             // private final int mItemHeight;
-            setItemHeight(itemHeight - getFontHeight(smallLabelSize))
+            setBNMenuViewHeight(itemHeight - getFontHeight(smallLabelSize))
         }
         theBottomNavigationMenuView.updateMenuView()
         return this
@@ -223,22 +226,22 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return NavigationBarItemView::class.java.safeFieldGet<Any>(fieldName, button) as? T
     }
 
-    override fun enableShiftingMode(enable: Boolean): BottomNavigationViewV140 {
+    override fun enableLabelVisibility(enable: Boolean): BottomNavigationViewV140 {
         labelVisibilityMode = if (enable) LABEL_VISIBILITY_SELECTED else LABEL_VISIBILITY_LABELED
         return this
     }
 
-    override fun enableShiftingMode(position: Int, enable: Boolean): BottomNavigationViewV140 {
-        getBottomNavigationItemView(position)?.setShifting(enable)
+    override fun enableBNItemViewLabelVisibility(position: Int, enable: Boolean): BottomNavigationViewV140 {
+        getBNItemView(position)?.setShifting(enable)
         return this
     }
 
-    override fun enableItemShiftingMode(enable: Boolean): BottomNavigationViewV140 {
+    override fun enableItemHorizontalTranslation(enable: Boolean): BottomNavigationViewV140 {
         isItemHorizontalTranslationEnabled = enable
         return this
     }
 
-    override fun getCurrentItem(): Int {
+    override fun getCurrentIndex(): Int {
         menu.forEachIndexed { index, item ->
             if (item.isChecked) {
                 return index
@@ -247,7 +250,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return -1
     }
 
-    override fun getMenuItemPosition(item: MenuItem): Int {
+    override fun menuItemPositionAt(item: MenuItem): Int {
         menu.forEachIndexed { index, m ->
             if (m.itemId == item.itemId) {
                 return index
@@ -279,15 +282,21 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return bnvHelper.getListener()
     }
 
-    override fun setMenuListener(menuListener: IMenuListener) {
+    override fun setMenuListener(menuListener: IMenuListener): BottomNavigationViewV140 {
         bnvHelper.setListener(menuListener)
+        return this
+    }
+
+    override fun setMenuDoubleClickListener(menuDoubleClickListener: IMenuDoubleClickListener): BottomNavigationViewV140 {
+        bnvHelper.setMenuDoubleClickListener(menuDoubleClickListener)
+        return this
     }
 
     override fun setInnerListener(listener: InnerListener) {
         this.innerListener = listener
     }
 
-    override fun getBottomNavigationMenuView(): BottomNavigationMenuView {
+    override fun getBNMenuView(): BottomNavigationMenuView {
         return theBottomNavigationMenuView
     }
 
@@ -296,35 +305,35 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return this
     }
 
-    override fun getBottomNavigationItemViews(): Array<BottomNavigationItemView> {
+    override fun getAllBNItemView(): Array<BottomNavigationItemView> {
         return theBottomNavigationItemViews
     }
 
-    override fun getBottomNavigationItemView(position: Int): BottomNavigationItemView? {
+    override fun getBNItemView(position: Int): BottomNavigationItemView? {
         return theBottomNavigationItemViews.getOrNull(position)
     }
 
     override fun getIconAt(position: Int): ImageView? {
-        val button = getBottomNavigationItemView(position)
+        val button = getBNItemView(position)
         return getButtonField(button, "icon")
     }
 
     override fun getSmallLabelAt(position: Int): TextView? {
-        val button = getBottomNavigationItemView(position)
+        val button = getBNItemView(position)
         return getButtonField(button, "smallLabel")
     }
 
     override fun getLargeLabelAt(position: Int): TextView? {
-        val button = getBottomNavigationItemView(position)
+        val button = getBNItemView(position)
         return getButtonField(button, "largeLabel")
     }
 
-    override fun getItemCount(): Int {
+    override fun getBNItemViewCount(): Int {
         return theBottomNavigationItemViews.size
     }
 
     override fun setSmallTextSize(sp: Float): BottomNavigationViewV140 {
-        val count = getItemCount()
+        val count = getBNItemViewCount()
         for (i in 0 until count) {
             getSmallLabelAt(i)?.textSize = sp
         }
@@ -333,7 +342,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun setLargeTextSize(sp: Float): BottomNavigationViewV140 {
-        val count = getItemCount()
+        val count = getBNItemViewCount()
         for (i in 0 until count) {
             getLargeLabelAt(i)?.textSize = sp
         }
@@ -376,7 +385,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun setIconSize(width: Float, height: Float): BottomNavigationViewV140 {
-        val count = getItemCount()
+        val count = getBNItemViewCount()
         for (i in 0 until count) {
             setIconSizeAt(i, width, height)
         }
@@ -388,7 +397,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return this
     }
 
-    override fun setItemHeight(height: Int): BottomNavigationViewV140 {
+    override fun setBNMenuViewHeight(height: Int): BottomNavigationViewV140 {
         BottomNavigationMenuView::class.java.safeFieldSet(
             "itemHeight",
             theBottomNavigationMenuView,
@@ -398,7 +407,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return this
     }
 
-    override fun getItemHeight(): Int {
+    override fun getBNMenuViewHeight(): Int {
         return BottomNavigationMenuView::class.java.safeFieldGet(
             "itemHeight",
             theBottomNavigationMenuView
@@ -406,7 +415,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun setTypeface(typeface: Typeface, style: Int): BottomNavigationViewV140 {
-        val count = getItemCount()
+        val count = getBNItemViewCount()
         for (i in 0 until count) {
             getLargeLabelAt(i)?.setTypeface(typeface, style)
             getSmallLabelAt(i)?.setTypeface(typeface, style)
@@ -416,7 +425,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun setTypeface(typeface: Typeface): BottomNavigationViewV140 {
-        val count = getItemCount()
+        val count = getBNItemViewCount()
         for (i in 0 until count) {
             getLargeLabelAt(i)?.typeface = typeface
             getSmallLabelAt(i)?.typeface = typeface
@@ -459,51 +468,51 @@ class BottomNavigationViewV140 : BottomNavigationView,
         return this
     }
 
-    override fun setItemBackground(position: Int, background: Int): BottomNavigationViewV140 {
-        getBottomNavigationItemView(position)?.setItemBackground(background)
+    override fun setBNItemViewBackgroundRes(position: Int, background: Int): BottomNavigationViewV140 {
+        getBNItemView(position)?.setItemBackground(background)
         return this
     }
 
-    override fun setIconTintList(tint: ColorStateList?): IBottomNavigationEx<BottomNavigationMenuView, BottomNavigationItemView> {
+    override fun setIconTintList(tint: ColorStateList?): BottomNavigationViewV140 {
         theBottomNavigationMenuView.iconTintList = tint
         return this
     }
 
     override fun setIconTintList(position: Int, tint: ColorStateList?): BottomNavigationViewV140 {
-        getBottomNavigationItemView(position)?.setIconTintList(tint)
+        getBNItemView(position)?.setIconTintList(tint)
         return this
     }
 
-    override fun setTextTintList(tint: ColorStateList?): IBottomNavigationEx<BottomNavigationMenuView, BottomNavigationItemView> {
+    override fun setTextTintList(tint: ColorStateList?): BottomNavigationViewV140 {
         theBottomNavigationMenuView.itemTextColor = tint
         return this
     }
 
     override fun setTextTintList(position: Int, tint: ColorStateList?): BottomNavigationViewV140 {
-        getBottomNavigationItemView(position)?.setTextColor(tint)
+        getBNItemView(position)?.setTextColor(tint)
         return this
     }
 
     override fun setIconsMarginTop(marginTop: Int): BottomNavigationViewV140 {
-        for (i in 0 until getItemCount()) {
+        for (i in 0 until getBNItemViewCount()) {
             setIconMarginTop(i, marginTop)
         }
         return this
     }
 
     override fun setIconMarginTop(position: Int, marginTop: Int): BottomNavigationViewV140 {
-        val itemView = getBottomNavigationItemView(position)
+        val itemView = getBNItemView(position)
         NavigationBarItemView::class.java.safeFieldSet("defaultMargin", itemView, marginTop)
         theBottomNavigationMenuView.updateMenuView()
         return this
     }
 
-    override fun setEmptyMenuIds(emptyMenuIds: List<Int>): IBottomNavigationEx<BottomNavigationMenuView, BottomNavigationItemView> {
+    override fun setEmptyMenuIds(emptyMenuIds: List<Int>): BottomNavigationViewV140 {
         bnvHelper.emptyMenuIds = emptyMenuIds
         return this
     }
 
-    override fun getMenuList(): List<MenuItem>{
+    override fun getMenuItems(): List<MenuItem>{
         val result = arrayListOf<MenuItem>()
         menu.forEachIndexed { index, item ->
             result.add(index, item)

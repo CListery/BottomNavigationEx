@@ -1,5 +1,6 @@
 package com.yh.bottomnavigationex.demo.features.setupwithviewpager;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
@@ -9,8 +10,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.yh.bottomnavigation_base.AbsMenuListener;
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener;
 import com.yh.bottomnavigation_base.IMenuListener;
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment;
 import com.yh.bottomnavigationex.demo.R;
@@ -98,7 +100,12 @@ public class SetupWithViewPagerActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        bind.bnve.setMenuDoubleClickListener(new IMenuDoubleClickListener() {
+            @Override
+            public void onDoubleClick(int position, @NonNull MenuItem menu) {
+                Toast.makeText(SetupWithViewPagerActivity.this, "double click: " + position + " " + menu.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**

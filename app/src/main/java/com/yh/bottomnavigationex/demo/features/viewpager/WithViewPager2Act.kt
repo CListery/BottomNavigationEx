@@ -1,11 +1,14 @@
 package com.yh.bottomnavigationex.demo.features.viewpager
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigationex.demo.R
 import com.yh.bottomnavigationex.demo.common.base.BaseFragment
 import com.yh.bottomnavigationex.demo.databinding.ActivityWithViewPager2Binding
@@ -30,7 +33,7 @@ class WithViewPager2Act : AppCompatActivity() {
      * change BottomNavigationViewEx style
      */
     private fun initView() {
-        bind.bnve.enableItemShiftingMode(true)
+        bind.bnve.enableItemHorizontalTranslation(true)
         bind.bnve.enableAnimation(false)
     }
 
@@ -44,6 +47,11 @@ class WithViewPager2Act : AppCompatActivity() {
 
     private fun initEvent() {
         bind.bnve.setupWithViewPager2(bind.vp)
+        bind.bnve.setMenuDoubleClickListener(object : IMenuDoubleClickListener {
+            override fun onDoubleClick(position: Int, menu: MenuItem) {
+                Toast.makeText(this@WithViewPager2Act, "double click: $position ${menu.title}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     inner class Vp2Adapter(fragmentActivity: FragmentActivity) :

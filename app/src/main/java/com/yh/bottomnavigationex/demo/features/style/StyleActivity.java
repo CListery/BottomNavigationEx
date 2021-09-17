@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.yh.bottomnavigation_base.AbsMenuListener;
+import com.yh.bottomnavigation_base.IMenuDoubleClickListener;
 import com.yh.bottomnavigation_base.IMenuListener;
 import com.yh.bottomnavigationex.BottomNavigationViewEx;
 import com.yh.bottomnavigationex.demo.R;
@@ -36,35 +37,35 @@ public class StyleActivity extends AppCompatActivity {
     private void init() {
         bind.bnveNoAnimation.enableAnimation(false);
 
-        bind.bnveNoShiftingMode.enableShiftingMode(false);
+        bind.bnveNoShiftingMode.enableLabelVisibility(false);
 
-        bind.bnveNoItemShiftingMode.enableItemShiftingMode(true);
+        bind.bnveNoItemShiftingMode.enableItemHorizontalTranslation(true);
 
         bind.bnveNoText.setTextVisibility(false);
 
         bind.bnveNoIcon.setIconVisibility(false);
 
         bind.bnveNoAnimationShiftingMode.enableAnimation(false);
-        bind.bnveNoAnimationShiftingMode.enableShiftingMode(false);
+        bind.bnveNoAnimationShiftingMode.enableLabelVisibility(false);
 
-        bind.bnveNoAnimationItemShiftingMode.enableItemShiftingMode(true);
+        bind.bnveNoAnimationItemShiftingMode.enableItemHorizontalTranslation(true);
         bind.bnveNoAnimationItemShiftingMode.enableAnimation(false);
 
         disableAllAnimation(bind.bnveNoAnimationShiftingModeItemShiftingMode);
 
-        bind.bnveNoShiftingModeItemShiftingModeText.enableShiftingMode(false);
-        bind.bnveNoShiftingModeItemShiftingModeText.enableItemShiftingMode(false);
+        bind.bnveNoShiftingModeItemShiftingModeText.enableLabelVisibility(false);
+        bind.bnveNoShiftingModeItemShiftingModeText.enableItemHorizontalTranslation(false);
         bind.bnveNoShiftingModeItemShiftingModeText.setTextVisibility(false);
 
 
         disableAllAnimation(bind.bnveNoAnimationShiftingModeItemShiftingModeText);
         bind.bnveNoAnimationShiftingModeItemShiftingModeText.setTextVisibility(false);
 
-        bind.bnveNoShiftingModeItemShiftingModeAndIcon.enableShiftingMode(false);
-        bind.bnveNoShiftingModeItemShiftingModeAndIcon.enableItemShiftingMode(false);
+        bind.bnveNoShiftingModeItemShiftingModeAndIcon.enableLabelVisibility(false);
+        bind.bnveNoShiftingModeItemShiftingModeAndIcon.enableItemHorizontalTranslation(false);
         bind.bnveNoShiftingModeItemShiftingModeAndIcon.setIconVisibility(false);
 
-        bind.bnveNoItemShiftingModeIcon.enableItemShiftingMode(true);
+        bind.bnveNoItemShiftingModeIcon.enableItemHorizontalTranslation(true);
         bind.bnveNoItemShiftingModeIcon.setIconVisibility(false);
 
         disableAllAnimation(bind.bnveNoAnimationShiftingModeItemShiftingModeIcon);
@@ -91,8 +92,8 @@ public class StyleActivity extends AppCompatActivity {
 
     private void disableAllAnimation(BottomNavigationViewEx bnve) {
         bnve.enableAnimation(false);
-        bnve.enableShiftingMode(false);
-        bnve.enableItemShiftingMode(false);
+        bnve.enableLabelVisibility(false);
+        bnve.enableItemHorizontalTranslation(false);
     }
 
     private void initCenterIconOnly() {
@@ -101,7 +102,7 @@ public class StyleActivity extends AppCompatActivity {
         // attention: you must ensure the center menu item title is empty
         // make icon bigger at centerPosition
         bind.bnveCenterIconOnly.setIconSizeAt(centerPosition, 48, 48);
-        bind.bnveCenterIconOnly.setItemBackground(centerPosition, R.color.colorGreen);
+        bind.bnveCenterIconOnly.setBNItemViewBackgroundRes(centerPosition, R.color.colorGreen);
         bind.bnveCenterIconOnly.setIconTintList(centerPosition, getResources().getColorStateList(R.color.selector_item_gray_color));
         bind.bnveCenterIconOnly.setIconMarginTop(centerPosition, BaseApplication.dp2px(this, 4));
         List<Integer> emptyIds = new ArrayList<>();
@@ -114,6 +115,12 @@ public class StyleActivity extends AppCompatActivity {
                 if (menu.getItemId() == R.id.menu_add) {
                     Toast.makeText(StyleActivity.this, "add", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        bind.bnveCenterIconOnly.setMenuDoubleClickListener(new IMenuDoubleClickListener() {
+            @Override
+            public void onDoubleClick(int position, @NonNull MenuItem menu) {
+                Toast.makeText(StyleActivity.this, "double click: " + position + " " + menu.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -132,7 +139,7 @@ public class StyleActivity extends AppCompatActivity {
         int iconSize = 36;
         bind.bnveBiggerIcon.setIconSize(iconSize, iconSize);
         // set item height
-        bind.bnveBiggerIcon.setItemHeight(BaseApplication.dp2px(this, iconSize + 16));
+        bind.bnveBiggerIcon.setBNMenuViewHeight(BaseApplication.dp2px(this, iconSize + 16));
     }
 
     private void initCustomTypeface() {
@@ -147,7 +154,7 @@ public class StyleActivity extends AppCompatActivity {
     private void initMargin() {
         disableAllAnimation(bind.bnveIconMarginTop);
         bind.bnveIconMarginTop.setTextVisibility(false);
-        bind.bnveIconMarginTop.setItemHeight(BaseApplication.dp2px(this, 56));
+        bind.bnveIconMarginTop.setBNMenuViewHeight(BaseApplication.dp2px(this, 56));
         bind.bnveIconMarginTop.setIconsMarginTop(BaseApplication.dp2px(this, 16));
 //        bind.bnveIconMarginTop.setIconTintList(0, getResources()
 //                .getColorStateList(R.color.colorGray));

@@ -5,41 +5,6 @@ An android lib for enhancing BottomNavigationView.(Extended from https://github.
 
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 14+](https://img.shields.io/badge/API-14%2B-green.svg)
 
-## Features ##
-
-|Method|Description
-|---|---|
-|enableAnimation|Enable or disable click item animation(text scale and icon move animation in no item shifting mode). Default true.
-|enableItemShiftingMode|Enable the shifting mode for each item. It will have a shifting animation for item if true. Otherwise the item text is always shown. Default true when item count > 3.
-|enableShiftingMode|Enable the shifting mode for navigation. It will has a shift animation if true. Otherwise all items are the same width. Default true when item count > 3.
-|getBottomNavigationItemView|Get private mButton in mMenuView at position
-|getBottomNavigationItemViews|Get private mButtons in mMenuView
-|getCurrentItem|Get the current checked item position.
-|getIconAt|Get icon at position.
-|getItemCount|Get item count.
-|getItemHeight|Get item height.
-|getLargeLabelAt|Get large label at position. Each item has two labels, one is large, the other is small.
-|getSmallLabelAt|Get small label at position. Each item has two labels, one is large, the other is small.
-|getMenuItemPosition|Get menu item position in menu. Return position if success, -1 otherwise.
-|getOnNavigationItemSelectedListener|Get OnNavigationItemSelectedListener.
-|setCurrentItem|Set the currently checked item.
-|setIconMarginTop|set margin top for icon.
-|setIconSize|Set all item ImageView size.
-|setIconSizeAt|Set all item ImageView size which is at position.
-|setIconsMarginTop|set margin top for all icons.
-|setIconTintList| Set item icon tint list.
-|setIconVisibility|Change the visibility of an icon.
-|setItemBackground| Set background of item.
-|setItemHeight|Set menu item height.
-|setLargeTextSize|Set all item large TextView size. Each item has two labels, one small and one large. The small one will be shown when item state is normal. The large one will be shown when item is checked.
-|setSmallTextSize|Set all item small TextView size. Each item has two labels, one small and one large. The small one will be shown when item state is normal. The large one will be shown when item is checked.
-|setTextSize|Set all item large and small TextView size.
-|setTextTintList|Set item TextView color.
-|setTextVisibility|Change the visibility of text.
-|setTypeface|set Typeface for all item TextView.
-|setupWithViewPager|This method will link the given ViewPager and this BottomNavigationViewEx together so that changes in one are automatically reflected in the other. This includes scroll state changes and clicks.
-
-
 ## Example ##
 
 **Style**
@@ -127,13 +92,13 @@ allprojects {
 Step 2. Add the dependency
 1. Use material: versions below 1.4.0
 ```groovy
-implementation 'io.github.clistery:bottomnavigationex-ex:1.0.1'
-implementation 'io.github.clistery:bottomnavigationex-130:1.0.1'
+implementation 'io.github.clistery:bottomnavigationex-ex:1.0.3'
+implementation 'io.github.clistery:bottomnavigationex-130:1.0.3'
 ```
 2. Use material: 1.4.0 and above
 ```groovy
-implementation 'io.github.clistery:bottomnavigationex-ex:1.0.1'
-implementation 'io.github.clistery:bottomnavigationex-140:1.0.1'
+implementation 'io.github.clistery:bottomnavigationex-ex:1.0.3'
+implementation 'io.github.clistery:bottomnavigationex-140:1.0.3'
 ```
 3. AndroidX
    use new version，and add config into gradle.properties

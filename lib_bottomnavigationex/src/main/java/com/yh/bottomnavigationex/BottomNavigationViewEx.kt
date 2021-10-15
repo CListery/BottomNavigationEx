@@ -316,13 +316,19 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
         return null
     }
 
-    @SuppressLint("MissingSuperCall")
     override fun onRestoreInstanceState(state: Parcelable?) {
+        try {
+            super.onRestoreInstanceState(null)
+        } catch (e: Exception) {
+        }
         iBottomNavigationEx.restoreInstanceState(state)
     }
 
-    @SuppressLint("MissingSuperCall")
     override fun onSaveInstanceState(): Parcelable? {
+        try {
+            super.onSaveInstanceState()
+        } catch (e: Exception) {
+        }
         return iBottomNavigationEx.saveInstanceState()
     }
 

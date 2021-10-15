@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -931,5 +932,16 @@ public class BottomNavigationViewV130 extends BottomNavigationView implements IB
             return null;
         });
         return CollectionsKt.toList(result);
+    }
+
+    @Override
+    public void restoreInstanceState(@Nullable Parcelable state) {
+        onRestoreInstanceState(state);
+    }
+
+    @Nullable
+    @Override
+    public Parcelable saveInstanceState() {
+        return onSaveInstanceState();
     }
 }

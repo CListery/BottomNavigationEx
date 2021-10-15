@@ -2,6 +2,7 @@ package com.yh.bottomnavigation_base
 
 import android.content.res.ColorStateList
 import android.graphics.Typeface
+import android.os.Parcelable
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -247,4 +248,14 @@ interface IBottomNavigationEx<BNV : View, BNMV : View, BNIV : View> {
      * 获取 MenuItems
      */
     fun getMenuItems(): List<MenuItem>
+
+    /**
+     * @see View.onRestoreInstanceState
+     */
+    fun restoreInstanceState(state: Parcelable?)
+
+    /**
+     * @see View.onSaveInstanceState
+     */
+    fun saveInstanceState(): Parcelable?
 }

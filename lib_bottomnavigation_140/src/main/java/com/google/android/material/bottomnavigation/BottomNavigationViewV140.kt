@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Paint
 import android.graphics.Typeface
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MenuItem
@@ -518,6 +519,14 @@ class BottomNavigationViewV140 : BottomNavigationView,
             result.add(index, item)
         }
         return result.toList()
+    }
+
+    override fun restoreInstanceState(state: Parcelable?){
+        onRestoreInstanceState(state)
+    }
+
+    override fun saveInstanceState(): Parcelable? {
+        return onSaveInstanceState()
     }
 
 }

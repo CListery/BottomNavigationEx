@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Canvas
 import android.graphics.Typeface
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuItem
@@ -306,4 +307,23 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
     override fun getMenu(): Menu {
         return iBottomNavigationEx.getMenu()
     }
+
+    override fun restoreInstanceState(state: Parcelable?) {
+
+    }
+
+    override fun saveInstanceState(): Parcelable? {
+        return null
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        iBottomNavigationEx.restoreInstanceState(state)
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onSaveInstanceState(): Parcelable? {
+        return iBottomNavigationEx.saveInstanceState()
+    }
+
 }

@@ -51,7 +51,7 @@ android {
 }
 
 dependencies {
-    implementation(AppDependencies.clistery.appinject)
+    implementation(AppDependencies.clistery.appbasic)
     kapt("com.android.databinding:compiler:1.3.2")
 
     implementation("androidx.core:core-ktx:1.3.2")

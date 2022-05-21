@@ -27,8 +27,8 @@ publishing {
             val publicName = "${rootProject.name} ${name.capitalize()}"
             pom {
                 name.set(publicName)
-                description.set("Continuation version for https://github.com/vicpinm/Kotlin-Realm-Extensions")
-                url.set("https://github.com/CListery/Kotlin-Realm-Extensions")
+                description.set("An android lib for enhancing BottomNavigationView.(Extended from https://github.com/ittianyu/BottomNavigationViewEx)")
+                url.set("https://github.com/CListery/BottomNavigationEx")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -44,9 +44,9 @@ publishing {
                     }
                 }
                 scm {
-                    url.set("")
-                    connection.set("scm:git@github.com:CListery/Kotlin-Realm-Extensions.git")
-                    developerConnection.set("scm:git@github.com:CListery/Kotlin-Realm-Extensions.git")
+                    url.set("https://github.com/CListery/BottomNavigationEx")
+                    connection.set("scm:git@github.com:CListery/BottomNavigationEx.git")
+                    developerConnection.set("scm:git@github.com:CListery/BottomNavigationEx.git")
                 }
                 withXml {
                     val allDependenciesNode = asNode().appendNode("dependencies")

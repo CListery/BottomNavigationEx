@@ -5,7 +5,8 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 object AppDependencies {
 
     object clistery{
-        const val appinject = "io.github.clistery:appinject:1.4.4"
+        const val appbasic = "io.github.clistery:appbasic:1.0.1"
+        const val appinject = "io.github.clistery:appinject:1.4.5"
     }
 
     object kotlin {

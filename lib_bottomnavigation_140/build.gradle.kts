@@ -38,8 +38,8 @@ dependencies {
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-
-    compileOnly(AppDependencies.clistery.appinject)
+    
+    compileOnly(AppDependencies.clistery.appbasic)
 //    api(project(mapOf("path" to ":lib_bottomnavigation_base")))
     api(AppConfig.base)
     api("com.google.android.material:material:1.4.0")

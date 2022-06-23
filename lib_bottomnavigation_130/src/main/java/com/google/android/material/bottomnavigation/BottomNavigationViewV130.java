@@ -26,6 +26,8 @@ import com.google.android.material.internal.ThemeEnforcement;
 import com.yh.bottomnavigation_base.IBottomNavigationEx;
 import com.yh.bottomnavigation_base.IMenuDoubleClickListener;
 import com.yh.bottomnavigation_base.IMenuListener;
+import com.yh.bottomnavigation_base.ext.ExtMenuKt;
+import com.yh.bottomnavigation_base.gesture.OnDoubleClickListener;
 import com.yh.bottomnavigation_base.helper.BNVHelper;
 import com.yh.bottomnavigation_base.helper.VP2Helper;
 import com.yh.bottomnavigation_base.helper.VPHelper;
@@ -943,5 +945,10 @@ public class BottomNavigationViewV130 extends BottomNavigationView implements IB
     @Override
     public Parcelable saveInstanceState() {
         return onSaveInstanceState();
+    }
+
+    @Override
+    public void setItemOnTouchListener(@NonNull MenuItem menuItem, @NonNull OnTouchListener onTouchListener) {
+        super.setItemOnTouchListener(menuItem.getItemId(), onTouchListener);
     }
 }

@@ -8,7 +8,7 @@ import androidx.annotation.RestrictTo
  * Created by Clistery on 18-12-10.
  */
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-internal class OnDoubleClickListener @JvmOverloads constructor(
+class OnDoubleClickListener @JvmOverloads constructor(
     enableAll: Boolean = true,
     view: View,
     private val onDoubleClick: () -> Unit

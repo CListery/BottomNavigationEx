@@ -528,5 +528,8 @@ class BottomNavigationViewV140 : BottomNavigationView,
     override fun saveInstanceState(): Parcelable? {
         return onSaveInstanceState()
     }
-
+    
+    override fun setItemOnTouchListener(menuItem: MenuItem, onTouchListener: OnTouchListener) {
+        super.setItemOnTouchListener(menuItem.itemId, onTouchListener)
+    }
 }

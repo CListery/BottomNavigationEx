@@ -1,5 +1,7 @@
 package com.yh.bottomnavigation_base.helper
 
+import android.annotation.SuppressLint
+import android.view.GestureDetector
 import android.view.Menu
 import android.view.MenuItem
 import com.yh.bottomnavigation_base.AbsMenuListener
@@ -9,7 +11,7 @@ import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.ext.emptyCountBeforeMenuItem
 import com.yh.bottomnavigation_base.ext.filterEmptyMenuIndex
 import com.yh.bottomnavigation_base.ext.indexOf
-import com.yh.bottomnavigation_base.ext.onDoubleClick
+import com.yh.bottomnavigation_base.gesture.OnDoubleClickListener
 import com.yh.bottomnavigation_base.internal.InnerListener
 import java.lang.ref.WeakReference
 import kotlin.concurrent.thread
@@ -107,21 +109,36 @@ class BNVHelper(bottomNavigationEx: IBottomNavigationEx<*, *, *>) {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     fun setMenuDoubleClickListener(menuDoubleClickListener: IMenuDoubleClickListener) {
         thread {
             iBNERef.get()?.getAllBNItemView()?.runCatching {
                 this.forEachIndexed { index, item ->
-                    val menuItem = iBNERef.get()?.getMenuItems()?.getOrNull(index) ?: return@forEachIndexed
-                    if (emptyMenuIds.contains(menuItem.itemId)) {
-                        return@forEachIndexed
-                    }
-                    val menu = iBNERef.get()?.getMenu() ?: return@forEachIndexed
-                    item.onDoubleClick {
-                        menuDoubleClickListener.onDoubleClick(
-                            menu.filterEmptyMenuIndex(menuItem, emptyMenuIds), menuItem
+                    item.post {
+                        val menuItem =
+                            iBNERef.get()?.getMenuItems()?.getOrNull(index) ?: return@post
+                        if (emptyMenuIds.contains(menuItem.itemId)) {
+                            return@post
+                        }
+    
+                        val menu = iBNERef.get()?.getMenu() ?: return@post
+                        val gestureDetector = GestureDetector(
+                            item.context,
+                            OnDoubleClickListener(view = item, onDoubleClick = {
+                                menuDoubleClickListener.onDoubleClick(
+                                    menu.filterEmptyMenuIndex(menuItem, emptyMenuIds), menuItem
+                                )
+                            })
                         )
+                        iBNERef.get()?.setItemOnTouchListener(menuItem) { _, event ->
+                            gestureDetector.onTouchEvent(event)
+                            // 避免拦截掉点击事件而导致点击后无反应
+                            false
+                        }
                     }
                 }
+            }?.onFailure {
+                it.printStackTrace()
             }
         }
     }

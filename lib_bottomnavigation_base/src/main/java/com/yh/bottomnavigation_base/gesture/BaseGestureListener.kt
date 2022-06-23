@@ -7,7 +7,7 @@ import android.view.View
 import androidx.annotation.RestrictTo
 
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-internal open class BaseGestureListener(protected val enableAll: Boolean, protected val view: View) :
+open class BaseGestureListener(protected val enableAll: Boolean, protected val view: View) :
     GestureDetector.SimpleOnGestureListener() {
 
     override fun onDown(e: MotionEvent?): Boolean = enableAll

@@ -1,5 +1,6 @@
 package com.yh.bottomnavigation_base
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Parcelable
@@ -258,4 +259,10 @@ interface IBottomNavigationEx<BNV : View, BNMV : View, BNIV : View> {
      * @see View.onSaveInstanceState
      */
     fun saveInstanceState(): Parcelable?
+    
+    /**
+     * 设置Menu的点击事件
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    fun setItemOnTouchListener(menuItem: MenuItem, onTouchListener: View.OnTouchListener)
 }

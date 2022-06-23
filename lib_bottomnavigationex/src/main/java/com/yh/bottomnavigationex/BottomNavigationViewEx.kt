@@ -331,5 +331,8 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
         }
         return iBottomNavigationEx.saveInstanceState()
     }
-
+    
+    override fun setItemOnTouchListener(menuItem: MenuItem, onTouchListener: OnTouchListener) {
+        iBottomNavigationEx.setItemOnTouchListener(menuItem, onTouchListener)
+    }
 }

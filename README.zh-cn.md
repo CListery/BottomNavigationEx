@@ -89,6 +89,7 @@ allprojects {
 ```
 
 步骤 2. 添加依赖
+
 1.使用 `material`1.4.0 以下版本
 ```groovy
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
@@ -139,7 +140,7 @@ bnve.setIconSize(widthDp, heightDp);
 bnve.setTextSize(sp);
 ```
 
-#### 和 ViewPager 绑定####
+#### 和 ViewPager 绑定 ####
 ```java
 // set adapter
 adapter = new VpAdapter(getSupportFragmentManager(), fragments);
@@ -149,7 +150,7 @@ bind.vp.setAdapter(adapter);
 bind.bnve.setupWithViewPager(bind.vp);
 ```
 
-#### 和 ViewPager2 绑定####
+#### 和 ViewPager2 绑定 ####
 ```java
 // set adapter
 adapter = new Vp2Adapter(getSupportFragmentManager());
@@ -174,7 +175,7 @@ bd.setVerticalOffset(2);
 其他用法和官方 `BottomNavigationView` 一样。
 详情[点击这里](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
 
-## 执照 ##
+## License ##
 
 	MIT License
 	

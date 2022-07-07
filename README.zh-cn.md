@@ -68,7 +68,7 @@
 
 ![](/read_me_images/center_fab.jpg)
 
-## 加入工程 ##
+## 引入项目 ##
 
 ### Sdk 版本 ###
 `compileSdkVersion` >= 25

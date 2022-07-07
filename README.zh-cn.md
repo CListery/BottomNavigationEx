@@ -1,17 +1,13 @@
-**Other Languages:**
-
-[![Chinese](https://img.shields.io/badge/Language-Chinese-blueviolet?style=for-the-badge)](README.zh-cn.md)
-
 # BottomNavigationEx
 
-An android lib for enhancing BottomNavigationView.(Extended from https://github.com/ittianyu/BottomNavigationViewEx)
+一个增强BottomNavigationView的android库。（扩展自https://github.com/ittianyu/BottomNavigationViewEx）
 
 
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 14+](https://img.shields.io/badge/API-14%2B-green.svg)
 
-## Example ##
+## 示例 ##
 
-**Style**
+**样式**
 
 ![](/read_me_images/normal.gif)
 
@@ -41,7 +37,7 @@ An android lib for enhancing BottomNavigationView.(Extended from https://github.
 
 ![](/read_me_images/no_animation_shifting_mode_item_shifting_mode_icon.gif)
 
-**Attention: Something wrong on Android 4.x**
+**注意：这个 style 在安卓 4.x 上有 bug**
 
 ![](/read_me_images/with_padding.jpg)
 
@@ -60,29 +56,28 @@ An android lib for enhancing BottomNavigationView.(Extended from https://github.
 ![](/read_me_images/unchecked_first_time.jpg)
 
 
-**With ViewPager or ViewPage2**
+**和 ViewPager 或 ViewPage2 一起使用**
 
 ![](/read_me_images/with_view_pager.gif)
 
-**Add ViewBadger**
+**带数字的小红点**
 
 ![](/read_me_images/view_badger.gif)
 
-**Center Floating Action Button**
+**中间悬浮按钮**
 
 ![](/read_me_images/center_fab.jpg)
 
+## 加入工程 ##
 
-## Adding to project ##
-
-### Sdk Version ###
+### Sdk 版本 ###
 `compileSdkVersion` >= 25
 
-### Importing to project(choose one) ###
+### 导入本库(选择其中一种) ###
 
-#### Example for Gradle: ####
+#### Gradle例子: ####
 
-Step 1. Add it in your root build.gradle at the end of repositories:
+步骤 1. 在工程根目录的 `build.gradle` 最后添加如下代码:
 ```groovy
 allprojects {
 	repositories {
@@ -93,27 +88,27 @@ allprojects {
 }
 ```
 
-Step 2. Add the dependency
-1. Use material: versions below 1.4.0
+步骤 2. 添加依赖
+1.使用 `material`1.4.0 以下版本
 ```groovy
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
 implementation 'io.github.clistery:bottomnavigationex-130:1.0.7'
 ```
-2. Use material: 1.4.0 and above
+1.使用 `material`1.4.0 及以上版
 ```groovy
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
 implementation 'io.github.clistery:bottomnavigationex-140:1.0.7'
 ```
 3. AndroidX
-   use new version，and add config into gradle.properties
+   使用新版本，然后在 gradle.properties 中添加如下配置
 ```
 android.useAndroidX=true
 android.enableJetifier=true
 ```
 
-## Getting started ##
+### 手动导入: ###
 
-Adding a custom widget in `xml` :
+在 `xml` 布局中添加自定义控件:
 ```xml
 <com.yh.bottomnavigationex.BottomNavigationViewEx
     android:id="@+id/bnve"
@@ -126,25 +121,25 @@ Adding a custom widget in `xml` :
     app:menu="@menu/menu_navigation_with_view_pager" />
 ```
 
-Binding view in `Activity`:
+在 `Activity` 中绑定控件:
 ```java
 BottomNavigationViewEx bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
 ```
 
-#### Disable all animations ####
+#### 禁止所有动画效果 ####
 ```java
 bnve.enableAnimation(false);
 bnve.enableShiftingMode(false);
 bnve.enableItemShiftingMode(false);
 ```
 
-#### Custom text and icon size ####
+#### 自定义图标和文本大小 ####
 ```java
 bnve.setIconSize(widthDp, heightDp);
 bnve.setTextSize(sp);
 ```
 
-#### Binding with ViewPager ####
+#### 和 ViewPager 绑定####
 ```java
 // set adapter
 adapter = new VpAdapter(getSupportFragmentManager(), fragments);
@@ -154,7 +149,7 @@ bind.vp.setAdapter(adapter);
 bind.bnve.setupWithViewPager(bind.vp);
 ```
 
-#### Binding with ViewPager2 ####
+#### 和 ViewPager2 绑定####
 ```java
 // set adapter
 adapter = new Vp2Adapter(getSupportFragmentManager());
@@ -164,7 +159,7 @@ bind.vp.setAdapter(adapter);
 bind.bnve.setupWithViewPager2(bind.vp);
 ```
 
-#### Add badge view ####
+#### 添加带数字的小红点 ####
 ```java
 BadgeDrawable bd = bind.bnve.getRealView().getOrCreateBadge(R.id.i_friends);
 bd.setNumber(1);
@@ -172,14 +167,14 @@ bd.setHorizontalOffset(12);
 bd.setVerticalOffset(2);
 ```
 
-#### Other usage in BottomNavigationViewEx ####
-You can see the demo.
+#### 其他 BottomNavigationViewEx 的用法 ####
+请参考demo。
 
-#### Usage in BottomNavigationView ####
-Other usage is the same as official `BottomNavigationView`.
-You can [click here](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView) for detail.
+#### 其他 BottomNavigationView 的用法 ####
+其他用法和官方 `BottomNavigationView` 一样。
+详情[点击这里](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
 
-## License ##
+## 执照 ##
 
 	MIT License
 	

@@ -64,7 +64,7 @@ interface IBottomNavigationEx<BNV : View, BNMV : View, BNIV : View> {
     fun getMenuListener(): IMenuListener?
 
     /**
-     * 获取监听器
+     * 设置监听器
      */
     fun setMenuListener(menuListener: IMenuListener): IBottomNavigationEx<BNV, BNMV, BNIV>
 

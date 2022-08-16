@@ -138,11 +138,13 @@ allprojects {
 
 1.使用 `material`1.4.0 以下版本
 ```groovy
+implementation 'io.github.clistery:appbasic:1.0.1'
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
 implementation 'io.github.clistery:bottomnavigationex-130:1.0.7'
 ```
 1.使用 `material`1.4.0 及以上版
 ```groovy
+implementation 'io.github.clistery:appbasic:1.0.1'
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
 implementation 'io.github.clistery:bottomnavigationex-140:1.0.7'
 ```

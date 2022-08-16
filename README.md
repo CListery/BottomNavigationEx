@@ -141,11 +141,13 @@ allprojects {
 Step 2. Add the dependency
 1. Use material: versions below 1.4.0
 ```groovy
+implementation 'io.github.clistery:appbasic:1.0.1'
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
 implementation 'io.github.clistery:bottomnavigationex-130:1.0.7'
 ```
 2. Use material: 1.4.0 and above
 ```groovy
+implementation 'io.github.clistery:appbasic:1.0.1'
 implementation 'io.github.clistery:bottomnavigationex-ex:1.0.7'
 implementation 'io.github.clistery:bottomnavigationex-140:1.0.7'
 ```

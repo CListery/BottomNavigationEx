@@ -4,25 +4,10 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object AppDependencies {
 
-    object clistery{
-        const val appbasic = "io.github.clistery:appbasic:1.0.1"
-        const val appinject = "io.github.clistery:appinject:1.4.5"
-    }
-
     object kotlin {
         
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${AppVersion.kotlin.version}"
         const val plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${AppVersion.kotlin.version}"
-    }
-    
-    object dokka {
-        
-        const val plugin = "org.jetbrains.dokka:dokka-gradle-plugin:${AppVersion.dokka.version}"
-    }
-    
-    object jfrog {
-        
-        const val buildInfo = "org.jfrog.buildinfo:build-info-extractor-gradle:4.23.4"
     }
     
     object androidx {

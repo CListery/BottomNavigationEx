@@ -6,12 +6,7 @@ object AppVersion {
     
     object kotlin {
         
-        const val version = "1.5.0"
-    }
-    
-    object dokka {
-        
-        const val version = "1.4.32"
+        const val version = "1.7.10"
     }
     
     object androidx {

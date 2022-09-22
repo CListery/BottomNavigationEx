@@ -17,12 +17,11 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.R
 import com.google.android.material.navigation.NavigationBarItemView
-import com.google.android.material.navigation.NavigationBarMenuView
-import com.kotlin.safeFieldGet
-import com.kotlin.safeFieldSet
 import com.yh.bottomnavigation_base.IBottomNavigationEx
 import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
+import com.yh.bottomnavigation_base.ext.getField
+import com.yh.bottomnavigation_base.ext.setField
 import com.yh.bottomnavigation_base.helper.BNVHelper
 import com.yh.bottomnavigation_base.helper.VP2Helper
 import com.yh.bottomnavigation_base.helper.VPHelper
@@ -45,11 +44,9 @@ class BottomNavigationViewV140 : BottomNavigationView,
     private val theBottomNavigationMenuView by lazy {
         menuView as BottomNavigationMenuView
     }
-    private val theBottomNavigationItemViews by lazy {
-        NavigationBarMenuView::class.java.safeFieldGet<Array<NavigationBarItemView>>(
-            "buttons",
-            menuView
-        )?.filterIsInstance<BottomNavigationItemView>()?.toTypedArray()!!
+    private val theBottomNavigationItemViews: Array<BottomNavigationItemView> by lazy {
+        theBottomNavigationMenuView.getField<BottomNavigationMenuView, Array<NavigationBarItemView>>("buttons")
+            .filterIsInstance<BottomNavigationItemView>().toTypedArray()
     }
 
     private var innerListener: InnerListener? = null
@@ -89,8 +86,8 @@ class BottomNavigationViewV140 : BottomNavigationView,
 
     override fun setIconVisibility(visibility: Boolean): BottomNavigationViewV140 {
         for (b in theBottomNavigationItemViews) {
-            val icon: ImageView? = getButtonField(b, "icon")
-            icon?.visibility = if (visibility) {
+            val icon: ImageView = b.getField("icon")
+            icon.visibility = if (visibility) {
                 View.VISIBLE
             } else {
                 View.INVISIBLE
@@ -104,8 +101,8 @@ class BottomNavigationViewV140 : BottomNavigationView,
 
             val button = theBottomNavigationItemViews.firstOrNull()
             if (null != button) {
-                val icon: ImageView? = getButtonField(button, "icon")
-                icon?.post {
+                val icon: ImageView = button.getField("icon")
+                icon.post {
                     setBNMenuViewHeight(itemHeight - icon.measuredHeight)
                 }
             }
@@ -122,8 +119,8 @@ class BottomNavigationViewV140 : BottomNavigationView,
         this.textVisibility = visibility
 
         for (b in theBottomNavigationItemViews) {
-            val largeLabel: TextView = getButtonField(b, "largeLabel")!!
-            val smallLabel: TextView = getButtonField(b, "smallLabel")!!
+            val largeLabel: TextView = b.getField("largeLabel")
+            val smallLabel: TextView = b.getField("smallLabel")
 
             if (visibility) {
                 // if not record the font size, we need do nothing.
@@ -187,8 +184,8 @@ class BottomNavigationViewV140 : BottomNavigationView,
 
     override fun enableAnimation(enable: Boolean): BottomNavigationViewV140 {
         for (b in theBottomNavigationItemViews) {
-            val largeLabel: TextView = getButtonField(b, "largeLabel")!!
-            val smallLabel: TextView = getButtonField(b, "smallLabel")!!
+            val largeLabel: TextView = b.getField("largeLabel")
+            val smallLabel: TextView = b.getField("smallLabel")
 
             if (!enable) {
                 if (!labelSizeRecord) {
@@ -218,15 +215,7 @@ class BottomNavigationViewV140 : BottomNavigationView,
         theBottomNavigationMenuView.updateMenuView()
         return this
     }
-
-    private fun <T> getButtonField(button: BottomNavigationItemView?, fieldName: String): T? {
-        if (null == button) {
-            return null
-        }
-        @Suppress("UNCHECKED_CAST")
-        return NavigationBarItemView::class.java.safeFieldGet<Any>(fieldName, button) as? T
-    }
-
+    
     override fun enableLabelVisibility(enable: Boolean): BottomNavigationViewV140 {
         labelVisibilityMode = if (enable) LABEL_VISIBILITY_SELECTED else LABEL_VISIBILITY_LABELED
         return this
@@ -315,18 +304,15 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun getIconAt(position: Int): ImageView? {
-        val button = getBNItemView(position)
-        return getButtonField(button, "icon")
+        return getBNItemView(position)?.getField("icon")
     }
 
     override fun getSmallLabelAt(position: Int): TextView? {
-        val button = getBNItemView(position)
-        return getButtonField(button, "smallLabel")
+        return getBNItemView(position)?.getField("smallLabel")
     }
 
     override fun getLargeLabelAt(position: Int): TextView? {
-        val button = getBNItemView(position)
-        return getButtonField(button, "largeLabel")
+        return getBNItemView(position)?.getField("largeLabel")
     }
 
     override fun getBNItemViewCount(): Int {
@@ -399,20 +385,14 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun setBNMenuViewHeight(height: Int): BottomNavigationViewV140 {
-        BottomNavigationMenuView::class.java.safeFieldSet(
-            "itemHeight",
-            theBottomNavigationMenuView,
-            height
-        )
-        theBottomNavigationMenuView.updateMenuView()
+        if(theBottomNavigationMenuView.setField("itemHeight", height)){
+            theBottomNavigationMenuView.updateMenuView()
+        }
         return this
     }
 
     override fun getBNMenuViewHeight(): Int {
-        return BottomNavigationMenuView::class.java.safeFieldGet(
-            "itemHeight",
-            theBottomNavigationMenuView
-        ) ?: 0
+        return theBottomNavigationMenuView.getField("itemHeight")
     }
 
     override fun setTypeface(typeface: Typeface, style: Int): BottomNavigationViewV140 {
@@ -502,9 +482,9 @@ class BottomNavigationViewV140 : BottomNavigationView,
     }
 
     override fun setIconMarginTop(position: Int, marginTop: Int): BottomNavigationViewV140 {
-        val itemView = getBNItemView(position)
-        NavigationBarItemView::class.java.safeFieldSet("defaultMargin", itemView, marginTop)
-        theBottomNavigationMenuView.updateMenuView()
+        if(getBNItemView(position).setField("defaultMargin", marginTop)){
+            theBottomNavigationMenuView.updateMenuView()
+        }
         return this
     }
 

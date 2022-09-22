@@ -1,38 +1,13 @@
-import com.clistery.src.AppConfig
-import com.clistery.src.AppDependencies
+import com.clistery.src.*
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-parcelize")
-    id("kotlin-kapt")
+    id("app")
 }
 
 android {
-    compileSdk = AppConfig.compileSdk
-    buildToolsVersion = AppConfig.buildToolsVersion
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        viewBinding = true
-    }
-    defaultConfig {
-        applicationId = "com.yh.bottomnavigationex.demo"
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
-    }
-
     signingConfigs {
         register("release") {
-            storeFile = file("E:\\work\\androidWork\\BottomNavigationEx\\app\\key.jks")
+            storeFile = file("key.jks")
             storePassword = "android"
             keyAlias = "android"
             keyPassword = "android"
@@ -51,9 +26,6 @@ android {
 }
 
 dependencies {
-    implementation(AppDependencies.clistery.appbasic)
-    kapt("com.android.databinding:compiler:1.3.2")
-
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
@@ -70,10 +42,10 @@ dependencies {
     // Optional
     releaseImplementation("com.squareup.leakcanary:leakcanary-object-watcher-android:2.7")
 
-//    implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
+    implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
 //    implementation(project(mapOf("path" to ":lib_bottomnavigation_130")))
-//    implementation(project(mapOf("path" to ":lib_bottomnavigation_140")))
-    implementation(AppConfig.ex)
-//    implementation(AppConfig.ex_130)
-    implementation(AppConfig.ex_140)
+    implementation(project(mapOf("path" to ":lib_bottomnavigation_140")))
+//    implementation(lib_ex)
+//    implementation(lib_130)
+//    implementation(lib_140)
 }

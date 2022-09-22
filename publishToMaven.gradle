@@ -1,0 +1,22 @@
+task baseToMaven {
+    dependsOn(":lib_bottomnavigation_base:publishReleaseAarPublicationTo_SONATYPE_Repository")
+}
+
+task material_1_3_0ToMaven(dependsOn: [baseToMaven]) {
+    dependsOn(":lib_bottomnavigation_130:publishReleaseAarPublicationTo_SONATYPE_Repository")
+}
+
+task material_1_4_0ToMaven(dependsOn: [baseToMaven]) {
+    dependsOn(":lib_bottomnavigation_140:publishReleaseAarPublicationTo_SONATYPE_Repository")
+}
+
+task exToMaven(dependsOn: [
+        material_1_3_0ToMaven,
+        material_1_4_0ToMaven,
+]) {
+    dependsOn(":lib_bottomnavigationex:publishReleaseAarPublicationTo_SONATYPE_Repository")
+}
+
+task publishToMaven(dependsOn: [exToMaven]) {
+
+}

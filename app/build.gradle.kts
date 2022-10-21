@@ -43,8 +43,8 @@ dependencies {
     releaseImplementation("com.squareup.leakcanary:leakcanary-object-watcher-android:2.7")
 
     implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
-//    implementation(project(mapOf("path" to ":lib_bottomnavigation_130")))
-    implementation(project(mapOf("path" to ":lib_bottomnavigation_140")))
+    implementation(project(mapOf("path" to ":lib_bottomnavigation_130")))
+//    implementation(project(mapOf("path" to ":lib_bottomnavigation_140")))
 //    implementation(lib_ex)
 //    implementation(lib_130)
 //    implementation(lib_140)

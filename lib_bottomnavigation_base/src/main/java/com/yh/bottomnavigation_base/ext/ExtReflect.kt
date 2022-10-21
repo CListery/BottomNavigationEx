@@ -1,5 +1,6 @@
 package com.yh.bottomnavigation_base.ext
 
+import android.os.Build
 import java.lang.reflect.Field
 import java.lang.reflect.Modifier
 
@@ -34,21 +35,25 @@ fun <T : Any, V : Any> T?.setField(
     }
     val field = this::class.java.findField(fieldName)
         ?: throw Exception("not found $fieldName in ${this::class.java}")
-    val accessible = field.isAccessible
     field.isAccessible = true
     val modifiers = field.modifiers
     
-    val accessFlags = Field::class.java.getDeclaredField("accessFlags")
-    val accessible1 = accessFlags.isAccessible
-    accessFlags.isAccessible = true
-    accessFlags.setInt(field, modifiers.xor(Modifier.FINAL))
-    
+    if (Modifier.isFinal(field.modifiers)) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            val accessFlagsField = Field::class.java.getDeclaredField("accessFlags")
+            accessFlagsField.isAccessible = true
+            accessFlagsField.setInt(field, modifiers.xor(Modifier.FINAL))
+        } else {
+            val artField = Field::class.java.getDeclaredField("artField")
+            artField.isAccessible = true
+            val artF = artField.get(field)
+            val artFieldClazz = Class.forName("java.lang.reflect.ArtField")
+            val accessFlagsField = artFieldClazz.getDeclaredField("accessFlags")
+            accessFlagsField.isAccessible = true
+            accessFlagsField.setInt(artF, modifiers.xor(Modifier.FINAL))
+        }
+    }
     field.set(this, value)
-    
-    accessFlags.setInt(field, modifiers)
-    accessFlags.isAccessible = accessible1
-    
-    field.isAccessible = accessible
     return true
 }
 
@@ -64,10 +69,8 @@ fun <T : Any, V : Any> T?.setField(
 fun <T : Any, V : Any> T.getField(fieldName: String): V {
     val field = this::class.java.findField(fieldName)
         ?: throw Exception("not found $fieldName in ${this::class.java}")
-    val accessible = field.isAccessible
     field.isAccessible = true
     val result = field.get(this)
-    field.isAccessible = accessible
     @Suppress("UNCHECKED_CAST")
     return result as V
 }

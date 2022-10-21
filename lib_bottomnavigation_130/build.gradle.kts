@@ -12,8 +12,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
-//    api(project(mapOf("path" to ":lib_bottomnavigation_base")))
-    api(lib_base)
+    api(project(mapOf("path" to ":lib_bottomnavigation_base")))
+//    api(lib_base)
     api("com.google.android.material:material:1.3.0")
 }
 

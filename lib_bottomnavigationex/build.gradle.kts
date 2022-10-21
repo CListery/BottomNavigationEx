@@ -13,10 +13,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
-//    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_130")))
-//    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_140")))
-    compileOnly(lib_130)
-    compileOnly(lib_140)
+    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_130")))
+    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_140")))
+//    compileOnly(lib_130)
+//    compileOnly(lib_140)
 }
 
 afterEvaluate {

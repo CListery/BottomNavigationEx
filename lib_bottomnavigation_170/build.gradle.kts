@@ -1,4 +1,4 @@
-import com.clistery.src.exArtifactId
+import com.clistery.src.ex170ArtifactId
 
 plugins {
     id("kre-publish")
@@ -10,19 +10,16 @@ dependencies {
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-
-    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_130")))
-    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_140")))
-    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_150")))
-    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_160")))
-    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_170")))
+    
+    api(project(mapOf("path" to ":lib_bottomnavigation_base")))
+    api("com.google.android.material:material:1.7.0")
 }
 
 afterEvaluate {
     publishing {
         publications {
             getByName<MavenPublication>("releaseAar") {
-                artifactId = exArtifactId
+                artifactId = ex170ArtifactId
             }
         }
     }

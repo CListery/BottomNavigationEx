@@ -8,9 +8,9 @@
 
 ## [APIs](./doc/API.md)
 
-## [示例](./doc/example.md)
+## [Example](./doc/example.md)
 
-## 依赖
+## Dependencies
 
 ### Gradle
 

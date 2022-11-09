@@ -39,11 +39,14 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
     ) {
         MaterialUtils.init(context)
         iBottomNavigationEx = when (MaterialUtils.version) {
-            MaterialUtils.MaterialVersion.V_1_4_X -> BottomNavigationViewV140(context, attrs, defStyleAttr)
-            MaterialUtils.MaterialVersion.V_1_5_X -> BottomNavigationViewV150(context, attrs, defStyleAttr)
-            MaterialUtils.MaterialVersion.V_1_6_X -> BottomNavigationViewV160(context, attrs, defStyleAttr)
-            MaterialUtils.MaterialVersion.V_1_7_X -> BottomNavigationViewV170(context, attrs, defStyleAttr)
-            else->BottomNavigationViewV130(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_4_X -> BottomNavigationViewV14x(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_5_X -> BottomNavigationViewV15x(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_6_X -> BottomNavigationViewV16x(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_7_X -> BottomNavigationViewV17x(context, attrs, defStyleAttr)
+            else-> BottomNavigationViewV13x(
+                context,
+                attrs,
+                defStyleAttr)
         }
         
         visibility = GONE

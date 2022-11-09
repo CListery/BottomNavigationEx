@@ -19,6 +19,7 @@ import com.google.android.material.bottomnavigation.*
 import com.yh.bottomnavigation_base.IBottomNavigationEx
 import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
+import com.yh.bottomnavigation_base.ext.dp2px
 import com.yh.bottomnavigation_base.internal.InnerListener
 
 class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView> {
@@ -36,12 +37,15 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
         attrs,
         defStyleAttr
     ) {
-        Utils.init(context)
-        iBottomNavigationEx = when (Utils.materialVersion) {
-            "1.4.0" -> BottomNavigationViewV140(context, attrs, defStyleAttr)
-            else -> BottomNavigationViewV130(context, attrs, defStyleAttr)
+        MaterialUtils.init(context)
+        iBottomNavigationEx = when (MaterialUtils.version) {
+            MaterialUtils.MaterialVersion.V_1_4_X -> BottomNavigationViewV140(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_5_X -> BottomNavigationViewV150(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_6_X -> BottomNavigationViewV160(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_7_X -> BottomNavigationViewV170(context, attrs, defStyleAttr)
+            else->BottomNavigationViewV130(context, attrs, defStyleAttr)
         }
-
+        
         visibility = GONE
         setWillNotDraw(true)
 
@@ -64,19 +68,33 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
     }
 
     override fun dispatchDraw(canvas: Canvas?) {}
-
+    
+    override fun setLayoutParams(params: ViewGroup.LayoutParams?) {
+        super.setLayoutParams(params)
+        realView.layoutParams = params
+    }
+    
     private fun replaceSelfWithView(parent: ViewGroup) {
         val index = parent.indexOfChild(this)
         if (-1 == index) {
             return
         }
         parent.removeViewInLayout(this)
-        val layoutParams = layoutParams
-        if (layoutParams != null) {
-            parent.addView(realView, index, layoutParams)
-        } else {
-            parent.addView(realView, index)
+        val itemHeight = when (MaterialUtils.version) {
+            MaterialUtils.MaterialVersion.V_1_5_X,
+            MaterialUtils.MaterialVersion.V_1_6_X,
+            MaterialUtils.MaterialVersion.V_1_7_X,
+            -> context.dp2px(56)
+            else -> -2
         }
+        val layoutParams = layoutParams ?: ViewGroup.LayoutParams(-1, itemHeight)
+        layoutParams.height = if (layoutParams.height > 0) {
+            layoutParams.height
+        } else {
+            itemHeight
+        }
+        parent.addView(realView, index, layoutParams)
+        realView.layoutParams = layoutParams
     }
 
     private fun inflate() {

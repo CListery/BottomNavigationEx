@@ -21,10 +21,4 @@ android {
         
         vectorDrawables.useSupportLibrary = true
     }
-//    sourceSets {
-//        named("main") {
-////            kotlin.srcDirs("src/main/kotlin")
-//            java.srcDirs("src/main/java", "src/main/kotlin")
-//        }
-//    }
 }

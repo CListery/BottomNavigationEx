@@ -14,10 +14,6 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
     
     this.compileSdk = compileSdkName.toInt()
     
-//    buildFeatures {
-//        viewBinding = true
-//    }
-    
     defaultConfig.apply {
         minSdk = minSdkName.toInt()
         //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -35,6 +31,7 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
             excludes += "/META-INF/CHANGES"
             excludes += "/META-INF/README*"
             excludes += "/META-INF/NOTICE*"
+            pickFirsts += "/META-INF/INDEX*"
         }
     }
     lint {
@@ -49,6 +46,9 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
         xmlOutput = project.file("${project.buildDir}/reports/lint/lint-reports.xml")
         checkDependencies = true
         ignoreTestSources = true
+    }
+    sourceSets.named("main") {
+        java.srcDirs("src/main/java", "src/main/kotlin")
     }
 }
 

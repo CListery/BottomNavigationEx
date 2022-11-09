@@ -26,47 +26,46 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation(libs.androidXCoreKtx)
+    implementation(libs.androidXAppcompat)
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     // leakcanary
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
-    releaseImplementation("com.squareup.leakcanary:leakcanary-android-release:2.7")
-    // Optional
-    releaseImplementation("com.squareup.leakcanary:leakcanary-object-watcher-android:2.7")
+    debugImplementation(libs.leakcanaryAndroid)
+    releaseImplementation(libs.bundles.leakcanaryRel)
 
-    implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
-//    implementation(lib_ex)
+//    implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
+    implementation(lib_ex)
     
-    // material 1.3.0
-    implementation("com.google.android.material:material:1.3.0")
-    implementation(project(mapOf("path" to ":lib_bottomnavigation_130")))
-//    implementation(lib_130)
+    // material 1.3.x
+//    implementation(libs.material130)
+//    implementation(project(mapOf("path" to ":lib_bottomnavigation_13x")))
+//    implementation(lib_13x)
     
-    // material 1.4.0
-//    implementation("com.google.android.material:material:1.4.0")
-//    implementation(project(mapOf("path" to ":lib_bottomnavigation_140")))
-//    implementation(lib_140)
+    // material 1.4.x
+//    implementation(libs.material140)
+//    implementation(project(mapOf("path" to ":lib_bottomnavigation_14x")))
+//    implementation(lib_14x)
     
-    // material 1.5.0
-//    implementation("com.google.android.material:material:1.5.0")
-//    implementation(project(mapOf("path" to ":lib_bottomnavigation_150")))
-//    implementation(lib_150)
+    // material 1.5.x
+//    implementation(libs.material150)
+//    implementation(project(mapOf("path" to ":lib_bottomnavigation_15x")))
+//    implementation(lib_15x)
     
-    // material 1.6.0
-//    implementation("com.google.android.material:material:1.6.0")
-//    implementation(project(mapOf("path" to ":lib_bottomnavigation_160")))
-//    implementation(lib_160)
+    // material 1.6.x
+//    implementation(libs.material160)
+//    implementation(libs.material161)
+//    implementation(project(mapOf("path" to ":lib_bottomnavigation_16x")))
+//    implementation(lib_16x)
     
-    // material 1.7.0
-//    implementation("com.google.android.material:material:1.7.0")
-//    implementation(project(mapOf("path" to ":lib_bottomnavigation_170")))
-//    implementation(lib_170)
+    // material 1.7.x
+    implementation(libs.material170)
+//    implementation(project(mapOf("path" to ":lib_bottomnavigation_17x")))
+    implementation(lib_17x)
 }

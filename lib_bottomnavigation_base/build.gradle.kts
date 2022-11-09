@@ -5,15 +5,19 @@ plugins {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation(libs.androidXCoreKtx)
+    implementation(libs.androidXAppcompat)
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    compileOnly("com.google.android.material:material:1.3.0")
-    compileOnly("com.google.android.material:material:1.4.0")
+    compileOnly(libs.material120)
+    compileOnly(libs.material130)
+    compileOnly(libs.material140)
+    compileOnly(libs.material150)
+    compileOnly(libs.material160)
+    compileOnly(libs.material170)
 }
 
 afterEvaluate {

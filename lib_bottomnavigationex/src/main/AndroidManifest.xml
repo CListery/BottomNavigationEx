@@ -2,4 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yh.bottomnavigationex">
 
+    <application>
+        <provider
+            android:name=".BNVExInit"
+            android:authorities="${applicationId}.bnvex.init"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
 </manifest>

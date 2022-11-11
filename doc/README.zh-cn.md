@@ -4,9 +4,9 @@
 
 > 一个增强BottomNavigationView的android库。（[~~BottomNavigationViewEx(已废弃)~~](https://github.com/ittianyu/BottomNavigationViewEx)的延续版本）
 
-## [APIs](./doc/API-zh-cn.md)
+## [APIs](./API-zh-cn.md)
 
-## [示例](./doc/example-zh-cn.md)
+## [示例](./example-zh-cn.md)
 
 ## 依赖
 

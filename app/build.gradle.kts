@@ -40,8 +40,8 @@ dependencies {
     debugImplementation(libs.leakcanaryAndroid)
     releaseImplementation(libs.bundles.leakcanaryRel)
 
-//    implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
-    implementation(lib_ex)
+   implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
+    // implementation(lib_ex)
     
     // material 1.3.x
 //    implementation(libs.material130)
@@ -65,7 +65,12 @@ dependencies {
 //    implementation(lib_16x)
     
     // material 1.7.x
-    implementation(libs.material170)
+    // implementation(libs.material170)
 //    implementation(project(mapOf("path" to ":lib_bottomnavigation_17x")))
-    implementation(lib_17x)
+//     implementation(lib_17x)
+    
+    // material 1.8.x
+    implementation(libs.material180)
+    implementation(project(mapOf("path" to ":lib_bottomnavigation_18x")))
+//     implementation(lib_18x)
 }

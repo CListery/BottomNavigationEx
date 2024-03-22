@@ -35,6 +35,7 @@ internal object MaterialUtils {
         V_1_5_X("1.5."),
         V_1_6_X("1.6."),
         V_1_7_X("1.7."),
+        V_1_8_X("1.8."),
         ;
         
         var real: String = ""

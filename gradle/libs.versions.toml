@@ -22,6 +22,7 @@ material150 = "1.5.0"
 material160 = "1.6.0"
 material161 = "1.6.1"
 material170 = "1.7.0"
+material180 = "1.8.0"
 
 [libraries]
 androidBuildToolGradle = {group = "com.android.tools.build", name = "gradle", version.ref = "androidBuildTool" }
@@ -44,6 +45,7 @@ material150 = {group = "com.google.android.material", name = "material", version
 material160 = {group = "com.google.android.material", name = "material", version.ref = "material160" }
 material161 = {group = "com.google.android.material", name = "material", version.ref = "material161" }
 material170 = {group = "com.google.android.material", name = "material", version.ref = "material170" }
+material180 = {group = "com.google.android.material", name = "material", version.ref = "material180" }
 leakcanaryAndroid = {group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
 leakcanaryAndroidRelease = {group = "com.squareup.leakcanary", name = "leakcanary-android-release", version.ref = "leakcanary" }
 leakcanaryAndroidObjectWather = {group = "com.squareup.leakcanary", name = "leakcanary-object-watcher-android", version.ref = "leakcanary" }

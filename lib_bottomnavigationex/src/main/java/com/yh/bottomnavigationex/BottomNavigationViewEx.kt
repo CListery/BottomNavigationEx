@@ -43,6 +43,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
             MaterialUtils.MaterialVersion.V_1_5_X -> BottomNavigationViewV15x(context, attrs, defStyleAttr)
             MaterialUtils.MaterialVersion.V_1_6_X -> BottomNavigationViewV16x(context, attrs, defStyleAttr)
             MaterialUtils.MaterialVersion.V_1_7_X -> BottomNavigationViewV17x(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_8_X -> BottomNavigationViewV18x(context, attrs, defStyleAttr)
             else-> BottomNavigationViewV13x(
                 context,
                 attrs,
@@ -87,6 +88,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
             MaterialUtils.MaterialVersion.V_1_5_X,
             MaterialUtils.MaterialVersion.V_1_6_X,
             MaterialUtils.MaterialVersion.V_1_7_X,
+            MaterialUtils.MaterialVersion.V_1_8_X,
             -> context.dp2px(56)
             else -> -2
         }

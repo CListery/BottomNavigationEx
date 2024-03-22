@@ -10,6 +10,7 @@ import com.yh.bottomnavigationex.demo.R;
 import com.yh.bottomnavigationex.demo.databinding.ActivityMainBinding;
 import com.yh.bottomnavigationex.demo.features.badgeview.BadgeViewActivity;
 import com.yh.bottomnavigationex.demo.features.centerfab.CenterFabActivity;
+import com.yh.bottomnavigationex.demo.features.example.ExampleAct;
 import com.yh.bottomnavigationex.demo.features.setupwithviewpager.SetupWithViewPagerActivity;
 import com.yh.bottomnavigationex.demo.features.style.StyleActivity;
 import com.yh.bottomnavigationex.demo.features.viewpager.WithViewPager2Act;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
+        bind.btnExample.setOnClickListener(this);
         bind.btnStyle.setOnClickListener(this);
         bind.btnWithViewPager.setOnClickListener(this);
         bind.btnSetupWithViewPager.setOnClickListener(this);
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_example:
+                startActivity(new Intent(this, ExampleAct.class));
+                break;
             case R.id.btn_style:
                 startActivity(new Intent(this, StyleActivity.class));
                 break;

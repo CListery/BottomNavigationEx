@@ -32,6 +32,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".features.badgeview.BadgeViewActivity" />
         <activity android:name=".features.centerfab.CenterFabActivity" />
+        <activity android:name=".features.example.ExampleAct" />
     </application>
 
 </manifest>

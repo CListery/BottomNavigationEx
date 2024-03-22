@@ -12,44 +12,51 @@
 
 ### Gradle
 
-1. 版本设置
+1. ex库
+
+    ```groovy
+    implementation 'io.github.clistery:bottomnavigationex-ex:x.x.x'
+    ```
+
+2. 基于 `material` 版本选择对应的版本
+
+    - `material`1.8.x
+
+        ```groovy
+        implementation 'io.github.clistery:bottomnavigationex-18x:x.x.x'
+        ```
 
     - `material`1.7.x
 
         ```groovy
-        implementation 'io.github.clistery:bottomnavigationex-ex:2.0.0'
-        implementation 'io.github.clistery:bottomnavigationex-17x:2.0.0'
+        implementation 'io.github.clistery:bottomnavigationex-17x:x.x.x'
         ```
 
     - `material`1.6.x
 
         ```groovy
-        implementation 'io.github.clistery:bottomnavigationex-ex:2.0.0'
-        implementation 'io.github.clistery:bottomnavigationex-16x:2.0.0'
+        implementation 'io.github.clistery:bottomnavigationex-16x:x.x.x'
         ```
 
     - `material`1.5.x
 
         ```groovy
-        implementation 'io.github.clistery:bottomnavigationex-ex:2.0.0'
-        implementation 'io.github.clistery:bottomnavigationex-15x:2.0.0'
+        implementation 'io.github.clistery:bottomnavigationex-15x:x.x.x'
         ```
 
     - `material`1.4.x
 
         ```groovy
-        implementation 'io.github.clistery:bottomnavigationex-ex:2.0.0'
-        implementation 'io.github.clistery:bottomnavigationex-14x:2.0.0'
+        implementation 'io.github.clistery:bottomnavigationex-14x:x.x.x'
         ```
 
     - `material`1.3.x
 
         ```groovy
-        implementation 'io.github.clistery:bottomnavigationex-ex:2.0.0'
-        implementation 'io.github.clistery:bottomnavigationex-13x:2.0.0'
+        implementation 'io.github.clistery:bottomnavigationex-13x:x.x.x'
         ```
 
-2. 在 `gradle.properties` 中添加如下配置
+3. 在 `gradle.properties` 中添加如下配置
 
    ```properties
    android.useAndroidX=true

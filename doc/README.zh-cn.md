@@ -20,6 +20,12 @@
 
 2. 基于 `material` 版本选择对应的版本
 
+    - `material`1.9.x
+
+        ```groovy
+        implementation 'io.github.clistery:bottomnavigationex-19x:x.x.x'
+        ```
+
     - `material`1.8.x
 
         ```groovy

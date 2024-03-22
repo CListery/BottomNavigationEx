@@ -70,7 +70,12 @@ dependencies {
 //     implementation(lib_17x)
     
     // material 1.8.x
-    implementation(libs.material180)
-    implementation(project(mapOf("path" to ":lib_bottomnavigation_18x")))
+    // implementation(libs.material180)
+    // implementation(project(mapOf("path" to ":lib_bottomnavigation_18x")))
 //     implementation(lib_18x)
+    
+    // material 1.9.x
+    implementation(libs.material190)
+    implementation(project(mapOf("path" to ":lib_bottomnavigation_19x")))
+//     implementation(lib_19x)
 }

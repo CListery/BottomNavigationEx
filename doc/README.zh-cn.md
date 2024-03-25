@@ -1,6 +1,7 @@
 # BottomNavigationEx
 
-![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 14+](https://img.shields.io/badge/API-14%2B-green.svg)
+
+[![version](https://jitpack.io/v/CListery/BottomNavigationEx.svg)](https://jitpack.io/#CListery/BottomNavigationEx) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 14+](https://img.shields.io/badge/API-14%2B-green.svg)
 
 > 一个增强BottomNavigationView的android库。（[~~BottomNavigationViewEx(已废弃)~~](https://github.com/ittianyu/BottomNavigationViewEx)的延续版本）
 

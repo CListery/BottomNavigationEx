@@ -2,7 +2,7 @@
 
 [中文文档](./doc/README.zh-cn.md)
 
-![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 14+](https://img.shields.io/badge/API-14%2B-green.svg)
+[![version](https://jitpack.io/v/CListery/BottomNavigationEx.svg)](https://jitpack.io/#CListery/BottomNavigationEx) ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 14+](https://img.shields.io/badge/API-14%2B-green.svg)
 
 > An android library that enhances BottomNavigationView. (Continuation of [~~BottomNavigationViewEx(obsolete)~~](https://github.com/ittianyu/BottomNavigationViewEx))
 

@@ -23,12 +23,27 @@ afterEvaluate {
         dependsOn(":lib_bottomnavigation_17x:publishReleaseAarPublicationTo_SONATYPE_Repository")
     }
 
+    task material_1_8_xToMaven(dependsOn: [baseToMaven]) {
+        dependsOn(":lib_bottomnavigation_18x:publishReleaseAarPublicationTo_SONATYPE_Repository")
+    }
+
+    task material_1_9_xToMaven(dependsOn: [baseToMaven]) {
+        dependsOn(":lib_bottomnavigation_19x:publishReleaseAarPublicationTo_SONATYPE_Repository")
+    }
+
+    task material_1_10_xToMaven(dependsOn: [baseToMaven]) {
+        dependsOn(":lib_bottomnavigation_110x:publishReleaseAarPublicationTo_SONATYPE_Repository")
+    }
+
     task exToMaven(dependsOn: [
             material_1_3_xToMaven,
             material_1_4_xToMaven,
             material_1_5_xToMaven,
             material_1_6_xToMaven,
             material_1_7_xToMaven,
+            material_1_8_xToMaven,
+            material_1_9_xToMaven,
+            material_1_10_xToMaven,
     ]) {
         dependsOn(":lib_bottomnavigationex:publishReleaseAarPublicationTo_SONATYPE_Repository")
     }

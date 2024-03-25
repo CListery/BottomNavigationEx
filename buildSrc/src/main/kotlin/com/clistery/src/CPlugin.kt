@@ -25,6 +25,7 @@ class CPlugin : Plugin<Project> {
             val ex17xArtifactId = artifactName.plus("-17x")
             val ex18xArtifactId = artifactName.plus("-18x")
             val ex19xArtifactId = artifactName.plus("-19x")
+            val ex110xArtifactId = artifactName.plus("-110x")
             
             project.extra.set("baseArtifactId", baseArtifactId)
             project.extra.set("exArtifactId", exArtifactId)
@@ -35,6 +36,7 @@ class CPlugin : Plugin<Project> {
             project.extra.set("ex17xArtifactId", ex17xArtifactId)
             project.extra.set("ex18xArtifactId", ex18xArtifactId)
             project.extra.set("ex19xArtifactId", ex19xArtifactId)
+            project.extra.set("ex110xArtifactId", ex110xArtifactId)
             
             project.extra.set("base", "${groupName}:${baseArtifactId}:${versionName}")
             project.extra.set("ex", "${groupName}:${exArtifactId}:${versionName}")
@@ -45,6 +47,7 @@ class CPlugin : Plugin<Project> {
             project.extra.set("_17x", "${groupName}:${ex17xArtifactId}:${versionName}")
             project.extra.set("_18x", "${groupName}:${ex18xArtifactId}:${versionName}")
             project.extra.set("_19x", "${groupName}:${ex19xArtifactId}:${versionName}")
+            project.extra.set("_110x", "${groupName}:${ex110xArtifactId}:${versionName}")
         }
         project.tasks.register("clean", Delete::class.java) {
             delete(project.buildDir)
@@ -61,6 +64,7 @@ val Project.lib_16x: String get() = rootProject.extra.get("_16x").toString()
 val Project.lib_17x: String get() = rootProject.extra.get("_17x").toString()
 val Project.lib_18x: String get() = rootProject.extra.get("_18x").toString()
 val Project.lib_19x: String get() = rootProject.extra.get("_19x").toString()
+val Project.lib_110x: String get() = rootProject.extra.get("_110x").toString()
 
 val Project.baseArtifactId: String get() = rootProject.extra.get("baseArtifactId").toString()
 val Project.exArtifactId: String get() = rootProject.extra.get("exArtifactId").toString()
@@ -71,3 +75,4 @@ val Project.ex16xArtifactId: String get() = rootProject.extra.get("ex16xArtifact
 val Project.ex17xArtifactId: String get() = rootProject.extra.get("ex17xArtifactId").toString()
 val Project.ex18xArtifactId: String get() = rootProject.extra.get("ex18xArtifactId").toString()
 val Project.ex19xArtifactId: String get() = rootProject.extra.get("ex19xArtifactId").toString()
+val Project.ex110xArtifactId: String get() = rootProject.extra.get("ex110xArtifactId").toString()

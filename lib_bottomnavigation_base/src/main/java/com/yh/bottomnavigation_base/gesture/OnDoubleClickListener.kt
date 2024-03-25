@@ -14,11 +14,11 @@ class OnDoubleClickListener @JvmOverloads constructor(
     private val onDoubleClick: () -> Unit
 ) : BaseGestureListener(enableAll, view) {
 
-    override fun onDown(e: MotionEvent?): Boolean {
+    override fun onDown(e: MotionEvent): Boolean {
         return true
     }
 
-    override fun onDoubleTap(e: MotionEvent?): Boolean {
+    override fun onDoubleTap(e: MotionEvent): Boolean {
         onDoubleClick.invoke()
         return true
     }

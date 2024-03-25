@@ -75,7 +75,12 @@ dependencies {
 //     implementation(lib_18x)
     
     // material 1.9.x
-    implementation(libs.material190)
-    implementation(project(mapOf("path" to ":lib_bottomnavigation_19x")))
+    // implementation(libs.material190)
+    // implementation(project(mapOf("path" to ":lib_bottomnavigation_19x")))
 //     implementation(lib_19x)
+    
+    // material 1.10.x
+    implementation(libs.material1100)
+    implementation(project(mapOf("path" to ":lib_bottomnavigation_110x")))
+//     implementation(lib_110x)
 }

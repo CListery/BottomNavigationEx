@@ -18,6 +18,7 @@ dependencies {
     compileOnly(project(mapOf("path" to ":lib_bottomnavigation_17x")))
     compileOnly(project(mapOf("path" to ":lib_bottomnavigation_18x")))
     compileOnly(project(mapOf("path" to ":lib_bottomnavigation_19x")))
+    compileOnly(project(mapOf("path" to ":lib_bottomnavigation_110x")))
 }
 
 afterEvaluate {

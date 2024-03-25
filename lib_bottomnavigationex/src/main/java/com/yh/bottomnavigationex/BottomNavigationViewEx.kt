@@ -45,6 +45,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
             MaterialUtils.MaterialVersion.V_1_7_X -> BottomNavigationViewV17x(context, attrs, defStyleAttr)
             MaterialUtils.MaterialVersion.V_1_8_X -> BottomNavigationViewV18x(context, attrs, defStyleAttr)
             MaterialUtils.MaterialVersion.V_1_9_X -> BottomNavigationViewV19x(context, attrs, defStyleAttr)
+            MaterialUtils.MaterialVersion.V_1_10_X -> BottomNavigationViewV110x(context, attrs, defStyleAttr)
             else-> BottomNavigationViewV13x(
                 context,
                 attrs,
@@ -69,10 +70,10 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
     }
 
     @SuppressLint("MissingSuperCall")
-    override fun draw(canvas: Canvas?) {
+    override fun draw(canvas: Canvas) {
     }
 
-    override fun dispatchDraw(canvas: Canvas?) {}
+    override fun dispatchDraw(canvas: Canvas) {}
     
     override fun setLayoutParams(params: ViewGroup.LayoutParams?) {
         super.setLayoutParams(params)
@@ -91,6 +92,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
             MaterialUtils.MaterialVersion.V_1_7_X,
             MaterialUtils.MaterialVersion.V_1_8_X,
             MaterialUtils.MaterialVersion.V_1_9_X,
+            MaterialUtils.MaterialVersion.V_1_10_X,
             -> context.dp2px(56)
             else -> -2
         }

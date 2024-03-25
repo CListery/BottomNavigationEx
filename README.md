@@ -22,6 +22,12 @@
 
 2. Version base on `material`
 
+    - `material`1.10.x
+
+        ```groovy
+        implementation 'io.github.clistery:bottomnavigationex-110x:x.x.x'
+        ```
+
     - `material`1.9.x
 
         ```groovy

@@ -39,8 +39,10 @@ dependencies {
     // leakcanary
     debugImplementation(libs.leakcanaryAndroid)
     releaseImplementation(libs.bundles.leakcanaryRel)
-
-   implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
+    
+    implementation("io.github.clistery:appbasic:2.5.4")
+    
+    implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
     // implementation(lib_ex)
     
     // material 1.3.x

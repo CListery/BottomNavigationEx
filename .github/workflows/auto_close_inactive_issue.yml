@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/stale@v5
         with:
+          exempt-issue-labels: question,bug,feature request
           days-before-issue-stale: 14
           days-before-issue-close: 3
           stale-issue-label: "stale"

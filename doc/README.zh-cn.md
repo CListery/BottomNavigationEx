@@ -144,6 +144,17 @@
     bd.setVerticalOffset(2);
     ```
 
+- 动态配置菜单项
+
+    ```kotlin
+    val menuCount: Int = max((Math.random() * 30).toInt(), 1)
+    
+    bnve.configDynamic(menuCount) { menu, index ->
+        menu.add(0, index, index, "menu${index}")
+            .setIcon(R.drawable.ic_favorite_black_24dp)
+    }
+    ```
+
 - 通过 getRealView 获取到原始 BottomNavigationView 的用法请参考[官方文档](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
 
 - 其他更多的用法，请参考demo。

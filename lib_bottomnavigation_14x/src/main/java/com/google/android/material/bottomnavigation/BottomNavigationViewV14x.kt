@@ -8,10 +8,14 @@ import android.graphics.Typeface
 import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.forEachIndexed
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
@@ -21,8 +25,9 @@ import com.yh.bottomnavigation_base.IBottomNavigationEx
 import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
 import com.yh.bottomnavigation_base.ext.dp2px
-import com.yh.bottomnavigation_base.ext.getField
-import com.yh.bottomnavigation_base.ext.setField
+import com.yh.bottomnavigation_base.ext.getFieldValue
+import com.yh.bottomnavigation_base.ext.safeGetFieldValue
+import com.yh.bottomnavigation_base.ext.setFieldValue
 import com.yh.bottomnavigation_base.helper.BNVHelper
 import com.yh.bottomnavigation_base.helper.VP2Helper
 import com.yh.bottomnavigation_base.helper.VPHelper
@@ -41,15 +46,13 @@ class BottomNavigationViewV14x : BottomNavigationView,
     private var itemHeight = 0
     private var textVisibility = true
     // used for animation end
-
-    private val theBottomNavigationMenuView by lazy {
-        menuView as BottomNavigationMenuView
-    }
-    private val theBottomNavigationItemViews: Array<BottomNavigationItemView> by lazy {
-        theBottomNavigationMenuView.getField<BottomNavigationMenuView, Array<NavigationBarItemView>>("buttons")
-            .filterIsInstance<BottomNavigationItemView>().toTypedArray()
-    }
-
+    
+    private val theBottomNavigationMenuView: BottomNavigationMenuView get() = menuView as BottomNavigationMenuView
+    private val theBottomNavigationItemViews: Array<BottomNavigationItemView>
+        get() = theBottomNavigationMenuView.safeGetFieldValue<BottomNavigationMenuView, Array<NavigationBarItemView>>("buttons")
+            ?.filterIsInstance<BottomNavigationItemView>()?.toTypedArray()
+            ?: emptyArray()
+    
     private var innerListener: InnerListener? = null
     private val bnvHelper: BNVHelper
 
@@ -87,7 +90,7 @@ class BottomNavigationViewV14x : BottomNavigationView,
 
     override fun setIconVisibility(visibility: Boolean): BottomNavigationViewV14x {
         for (b in theBottomNavigationItemViews) {
-            val icon: ImageView = b.getField("icon")
+            val icon: ImageView = b.getFieldValue("icon")
             icon.visibility = if (visibility) {
                 View.VISIBLE
             } else {
@@ -102,7 +105,7 @@ class BottomNavigationViewV14x : BottomNavigationView,
 
             val button = theBottomNavigationItemViews.firstOrNull()
             if (null != button) {
-                val icon: ImageView = button.getField("icon")
+                val icon: ImageView = button.getFieldValue("icon")
                 icon.post {
                     setBNMenuViewHeight(itemHeight - icon.measuredHeight)
                 }
@@ -120,8 +123,8 @@ class BottomNavigationViewV14x : BottomNavigationView,
         this.textVisibility = visibility
 
         for (b in theBottomNavigationItemViews) {
-            val largeLabel: TextView = b.getField("largeLabel")
-            val smallLabel: TextView = b.getField("smallLabel")
+            val largeLabel: TextView = b.getFieldValue("largeLabel")
+            val smallLabel: TextView = b.getFieldValue("smallLabel")
 
             if (visibility) {
                 // if not record the font size, we need do nothing.
@@ -185,8 +188,8 @@ class BottomNavigationViewV14x : BottomNavigationView,
 
     override fun enableAnimation(enable: Boolean): BottomNavigationViewV14x {
         for (b in theBottomNavigationItemViews) {
-            val largeLabel: TextView = b.getField("largeLabel")
-            val smallLabel: TextView = b.getField("smallLabel")
+            val largeLabel: TextView = b.getFieldValue("largeLabel")
+            val smallLabel: TextView = b.getFieldValue("smallLabel")
 
             if (!enable) {
                 if (!labelSizeRecord) {
@@ -305,15 +308,15 @@ class BottomNavigationViewV14x : BottomNavigationView,
     }
 
     override fun getIconAt(position: Int): ImageView? {
-        return getBNItemView(position)?.getField("icon")
+        return getBNItemView(position)?.getFieldValue("icon")
     }
 
     override fun getSmallLabelAt(position: Int): TextView? {
-        return getBNItemView(position)?.getField("smallLabel")
+        return getBNItemView(position)?.getFieldValue("smallLabel")
     }
 
     override fun getLargeLabelAt(position: Int): TextView? {
-        return getBNItemView(position)?.getField("largeLabel")
+        return getBNItemView(position)?.getFieldValue("largeLabel")
     }
 
     override fun getBNItemViewCount(): Int {
@@ -374,14 +377,14 @@ class BottomNavigationViewV14x : BottomNavigationView,
     }
 
     override fun setBNMenuViewHeight(height: Int): BottomNavigationViewV14x {
-        if(theBottomNavigationMenuView.setField("itemHeight", height)){
+        if(theBottomNavigationMenuView.setFieldValue("itemHeight", height)){
             theBottomNavigationMenuView.updateMenuView()
         }
         return this
     }
 
     override fun getBNMenuViewHeight(): Int {
-        return theBottomNavigationMenuView.getField("itemHeight")
+        return theBottomNavigationMenuView.getFieldValue("itemHeight")
     }
 
     override fun setTypeface(typeface: Typeface, style: Int): BottomNavigationViewV14x {
@@ -471,7 +474,7 @@ class BottomNavigationViewV14x : BottomNavigationView,
     }
 
     override fun setIconMarginTop(position: Int, marginTop: Int): BottomNavigationViewV14x {
-        if(getBNItemView(position).setField("defaultMargin", marginTop)){
+        if(getBNItemView(position).setFieldValue("defaultMargin", marginTop)){
             theBottomNavigationMenuView.updateMenuView()
         }
         return this
@@ -481,7 +484,53 @@ class BottomNavigationViewV14x : BottomNavigationView,
         bnvHelper.emptyMenuIds = emptyMenuIds
         return this
     }
-
+    
+    override fun configDynamic(count: Int, generator: (menu: Menu, index: Int) -> MenuItem): BottomNavigationViewV14x {
+        if(count > 0) {
+            menu.setFieldValue("maxItemCount", count)
+            val menu = configMenu()
+            presenter.setUpdateSuspended(false)
+            menu.clearAll()
+            for(i in 1 .. count) {
+                generator(menu, i)
+            }
+            menu.addMenuPresenter(presenter)
+            presenter.setUpdateSuspended(false)
+            presenter.updateMenuView(true)
+        }
+        return this
+    }
+    
+    private fun configMenu(): MenuBuilder {
+        val menuBuilder: MenuBuilder = getMenu() as MenuBuilder
+        if(menuView is BottomNavigationMenuView2) {
+            return menuBuilder
+        }
+        
+        val originMenuView = getBNMenuView()
+        
+        val params = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        params.gravity = Gravity.START
+        
+        val newMenuView = BottomNavigationMenuView2(context, originMenuView)
+        newMenuView.setLayoutParams(params)
+        
+        setFieldValue("menuView", newMenuView)
+        
+        presenter.setMenuView(newMenuView)
+        
+        presenter.initForMenu(context, menuBuilder)
+        
+        removeView(originMenuView)
+        addView(newMenuView, params)
+        
+        return menuBuilder
+    }
+    
+    override fun getMenuMaxItemCount(): Int {
+        return menu.getFieldValue("maxItemCount")
+    }
+    
     override fun getMenuItems(): List<MenuItem>{
         val result = arrayListOf<MenuItem>()
         menu.forEachIndexed { index, item ->

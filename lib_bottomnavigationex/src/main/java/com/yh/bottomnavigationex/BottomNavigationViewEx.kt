@@ -24,7 +24,6 @@ import com.yh.bottomnavigation_base.internal.InnerListener
 
 class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView> {
 
-    @Suppress("JoinDeclarationAndAssignment")
     private var iBottomNavigationEx: IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView>
     private var isLoaded: Boolean = false
 
@@ -333,6 +332,18 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
 
     override fun getMenu(): Menu {
         return iBottomNavigationEx.getMenu()
+    }
+    
+    override fun configDynamic(
+        count: Int,
+        generator: (menu: Menu, index: Int) -> MenuItem
+    ): BottomNavigationViewEx {
+        iBottomNavigationEx.configDynamic(count, generator)
+        return this
+    }
+    
+    override fun getMenuMaxItemCount(): Int {
+        return iBottomNavigationEx.getMenuMaxItemCount()
     }
 
     override fun restoreInstanceState(state: Parcelable?) {

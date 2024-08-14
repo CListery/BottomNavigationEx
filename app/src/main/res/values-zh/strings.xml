@@ -14,4 +14,5 @@
     <string name="weather">天气</string>
     <string name="tips_badge_removed">Badge 被消除了</string>
     <string name="center_fab">中间漂浮按钮</string>
+    <string name="changeable_size">长度可变菜单</string>
 </resources>

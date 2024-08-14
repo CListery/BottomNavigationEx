@@ -1,61 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data></data>
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:orientation="vertical"
-        tools:context=".features.MainActivity">
-
-        <Button
-            android:id="@+id/btn_example"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Example" />
-
-        <Button
-            android:id="@+id/btn_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/different_style" />
-
-        <Button
-            android:id="@+id/btn_with_view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/with_view_pager" />
-
-        <Button
-            android:id="@+id/btn_setup_with_view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/setup_with_view_pager" />
-
-        <Button
-            android:id="@+id/btn_setup_with_view_pager2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/setup_with_view_pager2" />
-
-        <Button
-            android:id="@+id/btn_badge_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/badge_view" />
-
-        <Button
-            android:id="@+id/btn_center_fab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/center_fab" />
-
-    </LinearLayout>
-
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin"
+            android:gravity="center_horizontal"
+            tools:context=".features.MainActivity">
+    
+            <TextView
+                android:id="@+id/txt_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="version"/>
+            
+            <Button
+                android:id="@+id/btn_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Example"/>
+    
+            <Button
+                android:id="@+id/btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/different_style"/>
+    
+            <Button
+                android:id="@+id/btn_with_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/with_view_pager"/>
+    
+            <Button
+                android:id="@+id/btn_setup_with_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setup_with_view_pager"/>
+    
+            <Button
+                android:id="@+id/btn_setup_with_view_pager2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setup_with_view_pager2"/>
+    
+            <Button
+                android:id="@+id/btn_badge_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/badge_view"/>
+    
+            <Button
+                android:id="@+id/btn_center_fab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/center_fab"/>
+    
+            <Button
+                android:id="@+id/btn_changeable_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/changeable_size"/>
+    
+        </LinearLayout>
+    </ScrollView>
 </layout>

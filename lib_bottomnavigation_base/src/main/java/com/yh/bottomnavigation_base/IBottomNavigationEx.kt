@@ -1,6 +1,5 @@
 package com.yh.bottomnavigation_base
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Parcelable
@@ -244,6 +243,17 @@ interface IBottomNavigationEx<BNV : View, BNMV : View, BNIV : View> {
      * 获取 menu
      */
     fun getMenu(): Menu
+
+    /**
+     * 动态配置 menu item
+     */
+    fun configDynamic(count: Int, generator: (menu: Menu, index: Int) -> MenuItem): IBottomNavigationEx<BNV, BNMV, BNIV>
+
+    /**
+     * menu item 最大个数
+     * V13x: 至少为5
+     */
+    fun getMenuMaxItemCount(): Int
 
     /**
      * 获取 MenuItems

@@ -40,7 +40,7 @@ dependencies {
     debugImplementation(libs.leakcanaryAndroid)
     releaseImplementation(libs.bundles.leakcanaryRel)
     
-    implementation("io.github.clistery:appbasic:2.5.4")
+    implementation(libs.appbasic)
     
     implementation(project(mapOf("path" to ":lib_bottomnavigationex")))
     // implementation(lib_ex)

@@ -43,3 +43,5 @@
 |getMenu|获取 menu
 |getMenuItems|获取 MenuItems
 |setItemOnTouchListener|设置Menu的点击事件（内部函数，无特殊需求请勿调用）
+|configDynamic|动态配置 menu item
+|getMenuMaxItemCount|menu item 最大个数 (V13x: 至少为5)

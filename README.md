@@ -145,6 +145,17 @@
     bd.setVerticalOffset(2);
     ```
 
+- Dynamic Menu Item
+
+    ```kotlin
+    val menuCount: Int = max((Math.random() * 30).toInt(), 1)
+    
+    bnve.configDynamic(menuCount) { menu, index ->
+        menu.add(0, index, index, "menu${index}")
+            .setIcon(R.drawable.ic_favorite_black_24dp)
+    }
+    ```
+
 - For the usage of the original BottomNavigationView obtained through getRealView, please refer to [Official Documentation](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
 
 - For more usage, please refer to demo.

@@ -43,3 +43,5 @@
 |getMenu|get menu
 |getMenuItems|Get MenuItems
 |setItemOnTouchListener|Set the click event of Menu (internal function, please do not call without special requirements)
+|configDynamic|Dynamic config menu item
+|getMenuMaxItemCount|Get menu max item size (V13x has a minimum of 5)

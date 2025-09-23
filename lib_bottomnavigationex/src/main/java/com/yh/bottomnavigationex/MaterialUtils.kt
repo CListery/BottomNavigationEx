@@ -22,14 +22,23 @@ internal object MaterialUtils {
         }
         val zipFile = ZipFile(appSourceDir)
         val entry = zipFile.entries().toList()
-            .find { it.name == "META-INF/com.google.android.material_material.version" }!!
-        val version = zipFile.getInputStream(entry).bufferedReader().use { it.readLine() }!!
-        MaterialVersion.values().find { version.startsWith(it.versionPrefix) }!!.apply {
-            real = version
+            .find { it.name == "META-INF/com.google.android.material_material.version" }
+        if(null == entry) {
+            throw RuntimeException("Not found META-INF")
         }
+        val versionString = zipFile.getInputStream(entry).bufferedReader().use { it.readLine() }
+        val ver = MaterialVersion.entries.find { versionString.startsWith(it.versionPrefix) }?.apply {
+            real = versionString
+        }
+        if(null == ver) {
+            throw RuntimeException("Not supported version: $versionString")
+        }
+        ver
     }
     
     internal enum class MaterialVersion(val versionPrefix: String) {
+        NOT_FOUND("unknown"),
+        NOT_SUPPORTED("unknown"),
         V_1_3_X("1.3."),
         V_1_4_X("1.4."),
         V_1_5_X("1.5."),

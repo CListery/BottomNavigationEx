@@ -1,0 +1,802 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>IBottomNavigationEx</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    BottomNavigationEx
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":lib_bottomnavigation_base/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":lib_bottomnavigation_base/release" data-filter=":lib_bottomnavigation_base/release">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    BottomNavigationEx
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="lib_bottomnavigation_base::com.yh.bottomnavigation_base/IBottomNavigationEx///PointingToDeclaration//1669593808">
+  <div class="breadcrumbs"><a href="../../index.html">lib_bottomnavigation_base</a><span class="delimiter">/</span><a href="../index.html">com.yh.bottomnavigation_base</a><span class="delimiter">/</span><span class="current">IBottomNavigationEx</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>IBottom</span><wbr><span>Navigation</span><wbr><span><span>Ex</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token operator"> : </span><a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token operator"> : </span><a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator"> : </span><a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a><span class="token operator">&gt;</span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-868025546%2FProperties%2F1669593808" anchor-label="realView" id="-868025546%2FProperties%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="real-view.html"><span>real</span><wbr><span><span>View</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-868025546%2FProperties%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="real-view.html">realView</a><span class="token operator">: </span><a href="index.html">BNV</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1808696553%2FFunctions%2F1669593808" anchor-label="clearIconTintColor" id="-1808696553%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-icon-tint-color.html"><span>clear</span><wbr><span>Icon</span><wbr><span>Tint</span><wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1808696553%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="clear-icon-tint-color.html"><span class="token function">clearIconTintColor</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">清除设置的图标 Tint 颜色</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2003069827%2FFunctions%2F1669593808" anchor-label="configDynamic" id="2003069827%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="config-dynamic.html"><span>config</span><wbr><span><span>Dynamic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2003069827%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="config-dynamic.html"><span class="token function">configDynamic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">count<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">generator<span class="token operator">: </span><span class="token punctuation">(</span>menu<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/Menu.html">Menu</a><span class="token punctuation">, </span>index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://developer.android.com/reference/kotlin/android/view/MenuItem.html">MenuItem</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">动态配置 menu item</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="111564261%2FFunctions%2F1669593808" anchor-label="enableAnimation" id="111564261%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="enable-animation.html"><span>enable</span><wbr><span><span>Animation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="111564261%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="enable-animation.html"><span class="token function">enableAnimation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">是否开启动画</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="607871588%2FFunctions%2F1669593808" anchor-label="enableBNItemViewLabelVisibility" id="607871588%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="enable-b-n-item-view-label-visibility.html"><span>enable</span><wbr><span>BNItem</span><wbr><span>View</span><wbr><span>Label</span><wbr><span><span>Visibility</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="607871588%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="enable-b-n-item-view-label-visibility.html"><span class="token function">enableBNItemViewLabelVisibility</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">enable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 BottomNavigationItemView 的标签可见性</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-320129009%2FFunctions%2F1669593808" anchor-label="enableItemHorizontalTranslation" id="-320129009%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="enable-item-horizontal-translation.html"><span>enable</span><wbr><span>Item</span><wbr><span>Horizontal</span><wbr><span><span>Translation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-320129009%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="enable-item-horizontal-translation.html"><span class="token function">enableItemHorizontalTranslation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置当组合项宽度填满屏幕时菜单项是否在选择时水平平移</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1087633213%2FFunctions%2F1669593808" anchor-label="enableLabelVisibility" id="-1087633213%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="enable-label-visibility.html"><span>enable</span><wbr><span>Label</span><wbr><span><span>Visibility</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1087633213%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="enable-label-visibility.html"><span class="token function">enableLabelVisibility</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置导航项的标签可见性</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2090367830%2FFunctions%2F1669593808" anchor-label="getAllBNItemView" id="-2090367830%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all-b-n-item-view.html"><span>get</span><wbr><span>All</span><wbr><span>BNItem</span><wbr><span><span>View</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2090367830%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-all-b-n-item-view.html"><span class="token function">getAllBNItemView</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取所有 BottomNavigationItemView</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-689531067%2FFunctions%2F1669593808" anchor-label="getBNItemView" id="-689531067%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-b-n-item-view.html"><span>get</span><wbr><span>BNItem</span><wbr><span><span>View</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-689531067%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-b-n-item-view.html"><span class="token function">getBNItemView</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BNIV</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">获取指定 position 对应的 BottomNavigationItemView</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-269948604%2FFunctions%2F1669593808" anchor-label="getBNItemViewCount" id="-269948604%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-b-n-item-view-count.html"><span>get</span><wbr><span>BNItem</span><wbr><span>View</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-269948604%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-b-n-item-view-count.html"><span class="token function">getBNItemViewCount</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">获取 BottomNavigationItemView count</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1632449637%2FFunctions%2F1669593808" anchor-label="getBNMenuView" id="-1632449637%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-b-n-menu-view.html"><span>get</span><wbr><span>BNMenu</span><wbr><span><span>View</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1632449637%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-b-n-menu-view.html"><span class="token function">getBNMenuView</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">BNMV</a></div><div class="brief "><p class="paragraph">获取 BottomNavigationMenuView 对象</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1543511476%2FFunctions%2F1669593808" anchor-label="getBNMenuViewHeight" id="1543511476%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-b-n-menu-view-height.html"><span>get</span><wbr><span>BNMenu</span><wbr><span>View</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1543511476%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-b-n-menu-view-height.html"><span class="token function">getBNMenuViewHeight</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">获取 BottomNavigationMenuView 高度</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-592242094%2FFunctions%2F1669593808" anchor-label="getCurrentIndex" id="-592242094%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-current-index.html"><span>get</span><wbr><span>Current</span><wbr><span><span>Index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-592242094%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-current-index.html"><span class="token function">getCurrentIndex</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">获取当前选中项的index</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="166414173%2FFunctions%2F1669593808" anchor-label="getIconAt" id="166414173%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-icon-at.html"><span>get</span><wbr><span>Icon</span><wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="166414173%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-icon-at.html"><span class="token function">getIconAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/widget/ImageView.html">ImageView</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">获取指定 position 对应的 Icon's view</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1121677533%2FFunctions%2F1669593808" anchor-label="getLargeLabelAt" id="1121677533%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-large-label-at.html"><span>get</span><wbr><span>Large</span><wbr><span>Label</span><wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1121677533%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-large-label-at.html"><span class="token function">getLargeLabelAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/widget/TextView.html">TextView</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">获取指定 position 对应的 LargeLabel's view</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1084328820%2FFunctions%2F1669593808" anchor-label="getMenu" id="-1084328820%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-menu.html"><span>get</span><wbr><span><span>Menu</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1084328820%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-menu.html"><span class="token function">getMenu</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/Menu.html">Menu</a></div><div class="brief "><p class="paragraph">获取 menu</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="22730926%2FFunctions%2F1669593808" anchor-label="getMenuItems" id="22730926%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-menu-items.html"><span>get</span><wbr><span>Menu</span><wbr><span><span>Items</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22730926%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-menu-items.html"><span class="token function">getMenuItems</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/android/view/MenuItem.html">MenuItem</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">获取 MenuItems</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2007163704%2FFunctions%2F1669593808" anchor-label="getMenuListener" id="2007163704%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-menu-listener.html"><span>get</span><wbr><span>Menu</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2007163704%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-menu-listener.html"><span class="token function">getMenuListener</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-i-menu-listener/index.html">IMenuListener</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">获取监听器</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-700161996%2FFunctions%2F1669593808" anchor-label="getMenuMaxItemCount" id="-700161996%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-menu-max-item-count.html"><span>get</span><wbr><span>Menu</span><wbr><span>Max</span><wbr><span>Item</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-700161996%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-menu-max-item-count.html"><span class="token function">getMenuMaxItemCount</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">menu item 最大个数 V13x: 至少为5</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-108508247%2FFunctions%2F1669593808" anchor-label="getSmallLabelAt" id="-108508247%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-small-label-at.html"><span>get</span><wbr><span>Small</span><wbr><span>Label</span><wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-108508247%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-small-label-at.html"><span class="token function">getSmallLabelAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/widget/TextView.html">TextView</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">获取指定 position 对应的 SmallLabel's view</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1618823749%2FFunctions%2F1669593808" anchor-label="menuItemPositionAt" id="-1618823749%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="menu-item-position-at.html"><span>menu</span><wbr><span>Item</span><wbr><span>Position</span><wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1618823749%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="menu-item-position-at.html"><span class="token function">menuItemPositionAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">item<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/MenuItem.html">MenuItem</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">获取menuItem所在position</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-427103910%2FFunctions%2F1669593808" anchor-label="restoreInstanceState" id="-427103910%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="restore-instance-state.html"><span>restore</span><wbr><span>Instance</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-427103910%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="restore-instance-state.html"><span class="token function">restoreInstanceState</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">state<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="140466722%2FFunctions%2F1669593808" anchor-label="saveInstanceState" id="140466722%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="save-instance-state.html"><span>save</span><wbr><span>Instance</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="140466722%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="save-instance-state.html"><span class="token function">saveInstanceState</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/Parcelable.html">Parcelable</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-513088270%2FFunctions%2F1669593808" anchor-label="setBNItemViewBackgroundRes" id="-513088270%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-b-n-item-view-background-res.html"><span>set</span><wbr><span>BNItem</span><wbr><span>View</span><wbr><span>Background</span><wbr><span><span>Res</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-513088270%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-b-n-item-view-background-res.html"><span class="token function">setBNItemViewBackgroundRes</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">background<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置指定 position 的 BottomNavigationItemView 的 background 资源</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-310544954%2FFunctions%2F1669593808" anchor-label="setBNMenuViewHeight" id="-310544954%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-b-n-menu-view-height.html"><span>set</span><wbr><span>BNMenu</span><wbr><span>View</span><wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-310544954%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-b-n-menu-view-height.html"><span class="token function">setBNMenuViewHeight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 BottomNavigationMenuView 高度</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-507998739%2FFunctions%2F1669593808" anchor-label="setCurrentItem" id="-507998739%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-current-item.html"><span>set</span><wbr><span>Current</span><wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-507998739%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-current-item.html"><span class="token function">setCurrentItem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">index<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置当前选中的index</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="690536299%2FFunctions%2F1669593808" anchor-label="setEmptyMenuIds" id="690536299%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-empty-menu-ids.html"><span>set</span><wbr><span>Empty</span><wbr><span>Menu</span><wbr><span><span>Ids</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="690536299%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-empty-menu-ids.html"><span class="token function">setEmptyMenuIds</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">emptyMenuIds<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 empty menu ids，一般用于添加特殊按钮</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-718387854%2FFunctions%2F1669593808" anchor-label="setIconMarginTop" id="-718387854%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-icon-margin-top.html"><span>set</span><wbr><span>Icon</span><wbr><span>Margin</span><wbr><span><span>Top</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-718387854%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-margin-top.html"><span class="token function">setIconMarginTop</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">marginTop<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置设置指定 position 的 Icon 的顶部边距</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1580805912%2FFunctions%2F1669593808" anchor-label="setIconSize" id="-1580805912%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-icon-size.html"><span>set</span><wbr><span>Icon</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1580805912%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-size.html"><span class="token function">setIconSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dpSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 Icon 大小</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-size.html"><span class="token function">setIconSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 Icon 宽高</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1027792336%2FFunctions%2F1669593808" anchor-label="setIconSizeAt" id="1027792336%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-icon-size-at.html"><span>set</span><wbr><span>Icon</span><wbr><span>Size</span><wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1027792336%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-size-at.html"><span class="token function">setIconSizeAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置指定 position 对应的 Icon 宽高</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1223702032%2FFunctions%2F1669593808" anchor-label="setIconsMarginTop" id="-1223702032%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-icons-margin-top.html"><span>set</span><wbr><span>Icons</span><wbr><span>Margin</span><wbr><span><span>Top</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1223702032%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icons-margin-top.html"><span class="token function">setIconsMarginTop</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">marginTop<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 Icon 的顶部边距</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-325274491%2FFunctions%2F1669593808" anchor-label="setIconTintList" id="-325274491%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-icon-tint-list.html"><span>set</span><wbr><span>Icon</span><wbr><span>Tint</span><wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-325274491%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-tint-list.html"><span class="token function">setIconTintList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tint<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/res/ColorStateList.html">ColorStateList</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 Icon 的颜色</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-tint-list.html"><span class="token function">setIconTintList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">tint<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/res/ColorStateList.html">ColorStateList</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置指定 position 的 Icon 的颜色</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1363396807%2FFunctions%2F1669593808" anchor-label="setIconVisibility" id="-1363396807%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-icon-visibility.html"><span>set</span><wbr><span>Icon</span><wbr><span><span>Visibility</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1363396807%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-icon-visibility.html"><span class="token function">setIconVisibility</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">visibility<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">修改图标可见状态</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-900839639%2FFunctions%2F1669593808" anchor-label="setInnerListener" id="-900839639%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-inner-listener.html"><span>set</span><wbr><span>Inner</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-900839639%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-inner-listener.html"><span class="token function">setInnerListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><span data-unresolved-link="com.yh.bottomnavigation_base.internal/InnerListener///PointingToDeclaration/">InnerListener</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">设置内部监听器</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1671623206%2FFunctions%2F1669593808" anchor-label="setItemOnTouchListener" id="-1671623206%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-item-on-touch-listener.html"><span>set</span><wbr><span>Item</span><wbr><span>On</span><wbr><span>Touch</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1671623206%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-item-on-touch-listener.html"><span class="token function">setItemOnTouchListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">menuItem<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/MenuItem.html">MenuItem</a><span class="token punctuation">, </span></span><span class="parameter ">onTouchListener<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/view/View.OnTouchListener.html">View.OnTouchListener</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">设置Menu的点击事件</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1279904317%2FFunctions%2F1669593808" anchor-label="setLargeTextSize" id="-1279904317%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-large-text-size.html"><span>set</span><wbr><span>Large</span><wbr><span>Text</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1279904317%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-large-text-size.html"><span class="token function">setLargeTextSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 LargeText 的字体大小</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1932520799%2FFunctions%2F1669593808" anchor-label="setMenuDoubleClickListener" id="-1932520799%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-menu-double-click-listener.html"><span>set</span><wbr><span>Menu</span><wbr><span>Double</span><wbr><span>Click</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1932520799%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-menu-double-click-listener.html"><span class="token function">setMenuDoubleClickListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">menuDoubleClickListener<span class="token operator">: </span><a href="../-i-menu-double-click-listener/index.html">IMenuDoubleClickListener</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置双击监听器</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1665655839%2FFunctions%2F1669593808" anchor-label="setMenuListener" id="1665655839%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-menu-listener.html"><span>set</span><wbr><span>Menu</span><wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1665655839%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-menu-listener.html"><span class="token function">setMenuListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">menuListener<span class="token operator">: </span><a href="../-i-menu-listener/index.html">IMenuListener</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置监听器</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-788539529%2FFunctions%2F1669593808" anchor-label="setSmallTextSize" id="-788539529%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-small-text-size.html"><span>set</span><wbr><span>Small</span><wbr><span>Text</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-788539529%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-small-text-size.html"><span class="token function">setSmallTextSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 SmallText 的字体大小</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1243380862%2FFunctions%2F1669593808" anchor-label="setTextSize" id="-1243380862%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-text-size.html"><span>set</span><wbr><span>Text</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1243380862%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-text-size.html"><span class="token function">setTextSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置 SmallText、LargeText 的字体大小</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-682170083%2FFunctions%2F1669593808" anchor-label="setTextTintList" id="-682170083%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-text-tint-list.html"><span>set</span><wbr><span>Text</span><wbr><span>Tint</span><wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-682170083%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-text-tint-list.html"><span class="token function">setTextTintList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tint<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/res/ColorStateList.html">ColorStateList</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置字体的颜色</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-text-tint-list.html"><span class="token function">setTextTintList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">position<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">tint<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/res/ColorStateList.html">ColorStateList</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置设置指定 position 的字体的颜色</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="634453253%2FFunctions%2F1669593808" anchor-label="setTextVisibility" id="634453253%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-text-visibility.html"><span>set</span><wbr><span>Text</span><wbr><span><span>Visibility</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="634453253%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-text-visibility.html"><span class="token function">setTextVisibility</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">visibility<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">修改文字可见状态</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1787150961%2FFunctions%2F1669593808" anchor-label="setTypeface" id="1787150961%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-typeface.html"><span>set</span><wbr><span><span>Typeface</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1787150961%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-typeface.html"><span class="token function">setTypeface</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">typeface<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Typeface.html">Typeface</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-typeface.html"><span class="token function">setTypeface</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">typeface<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Typeface.html">Typeface</a><span class="token punctuation">, </span></span><span class="parameter ">style<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">设置字体和样式</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1026360072%2FFunctions%2F1669593808" anchor-label="setupWithViewPager" id="-1026360072%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="setup-with-view-pager.html"><span>setup</span><wbr><span>With</span><wbr><span>View</span><wbr><span><span>Pager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1026360072%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="setup-with-view-pager.html"><span class="token function">setupWithViewPager</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vp<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager.html">ViewPager</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="setup-with-view-pager.html"><span class="token function">setupWithViewPager</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vp<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/viewpager/widget/ViewPager.html">ViewPager</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">smoothScroll<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">绑定到 ViewPager</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="907839600%2FFunctions%2F1669593808" anchor-label="setupWithViewPager2" id="907839600%2FFunctions%2F1669593808" data-filterable-set=":lib_bottomnavigation_base/release"></a>
+          <div class="table-row" data-filterable-current=":lib_bottomnavigation_base/release" data-filterable-set=":lib_bottomnavigation_base/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="setup-with-view-pager2.html"><span>setup</span><wbr><span>With</span><wbr><span>View</span><wbr><span><span>Pager2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="907839600%2FFunctions%2F1669593808"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib_bottomnavigation_base/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="setup-with-view-pager2.html"><span class="token function">setupWithViewPager2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vp2<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/viewpager2/widget/ViewPager2.html">ViewPager2</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="setup-with-view-pager2.html"><span class="token function">setupWithViewPager2</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">vp2<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/viewpager2/widget/ViewPager2.html">ViewPager2</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">smoothScroll<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">IBottomNavigationEx</a><span class="token operator">&lt;</span><a href="index.html">BNV</a><span class="token punctuation">, </span><a href="index.html">BNMV</a><span class="token punctuation">, </span><a href="index.html">BNIV</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">绑定到 ViewPager2</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Clistery</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

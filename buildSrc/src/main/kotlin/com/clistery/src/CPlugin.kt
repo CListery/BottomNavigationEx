@@ -49,9 +49,6 @@ class CPlugin : Plugin<Project> {
             project.extra.set("_19x", "${groupName}:${ex19xArtifactId}:${versionName}")
             project.extra.set("_110x", "${groupName}:${ex110xArtifactId}:${versionName}")
         }
-        project.tasks.register("clean", Delete::class.java) {
-            delete(project.buildDir)
-        }
     }
 }
 

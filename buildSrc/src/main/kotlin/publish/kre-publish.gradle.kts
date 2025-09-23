@@ -7,33 +7,27 @@ plugins {
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
     val artifactId: String? by project
     moduleName.set(artifactId)
-    
-    dokkaSourceSets {
-        configureEach {
-            skipDeprecated.set(true)
-            skipEmptyPackages.set(true)
-            //            noStdlibLink.set(true)
-            //            noAndroidSdkLink.set(true)
-            //            noJdkLink.set(true)
-            //            includeNonPublic.set(true)
+    moduleVersion.set(project.version.toString())
+}
+
+dokka {
+    val artifactId: String? by project
+    moduleName.set(artifactId)
+
+    dokkaSourceSets.main {
+        documentedVisibilities(
+            org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier.Public,
+            org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier.Protected,
+        )
+
+        perPackageOption {
+            matchingRegex.set(".*internal.*")
+            suppress.set(true)
         }
     }
-    offlineMode.set(true)
-}
-
-val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
-    dependsOn(tasks.dokkaHtml)
-    from(tasks.dokkaHtml.get().outputDirectory)
-    archiveClassifier.set("javadoc")
-}
-
-publishing {
-    publications.withType<MavenPublication>().configureEach {
-        artifact(javadocJar)
+    pluginsConfiguration {
+        html {
+            footerMessage.set("© 2025 Clistery")
+        }
     }
-}
-
-tasks.register<org.jetbrains.dokka.gradle.DokkaTask>("dokkaDocs") {
-    dependsOn(tasks.dokkaJekyll)
-    outputDirectory.set(file("$rootDir/docs"))
 }

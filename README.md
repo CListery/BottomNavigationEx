@@ -156,6 +156,10 @@
     }
     ```
 
+- About support Android 15 Edge-To-Edge effect
+  - [Display content edge-to-edge in views](https://developer.android.com/develop/ui/views/layout/edge-to-edge)
+  - [Handle edge-to-edge enforcements in Android 15](https://developer.android.com/codelabs/edge-to-edge)
+
 - For the usage of the original BottomNavigationView obtained through getRealView, please refer to [Official Documentation](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
 
 - For more usage, please refer to demo.

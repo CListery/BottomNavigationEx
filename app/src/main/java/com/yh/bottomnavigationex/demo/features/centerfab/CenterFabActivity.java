@@ -3,10 +3,15 @@ package com.yh.bottomnavigationex.demo.features.centerfab;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.OnApplyWindowInsetsListener;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,6 +38,19 @@ public class CenterFabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_with_view_pager);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_center_fab);
+
+        // Android 15 edge-to-edge
+        ViewCompat.setOnApplyWindowInsetsListener(bind.fab, (v, insetsCompat) -> {
+            Insets insets = insetsCompat.getInsets(WindowInsetsCompat.Type.systemBars() + WindowInsetsCompat.Type.displayCutout());
+
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) bind.fab.getLayoutParams();
+            lp.leftMargin = insets.left;
+            lp.bottomMargin += insets.bottom;
+            lp.rightMargin = insets.right;
+            bind.fab.setLayoutParams(lp);
+
+            return WindowInsetsCompat.CONSUMED;
+        });
 
         initData();
         initView();

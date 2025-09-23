@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yh.bottomnavigationex.demo">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".common.base.BaseApplication"
@@ -20,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".features.style.StyleActivity" />
+        <activity android:name=".features.style.StyleActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".features.viewpager.WithViewPagerActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -34,6 +34,7 @@
         <activity android:name=".features.centerfab.CenterFabActivity" />
         <activity android:name=".features.example.ExampleAct" />
         <activity android:name=".features.dynamic.DynamicMenuAct" />
+        <activity android:name=".features.material.MaterialDefaultAct" />
     </application>
 
 </manifest>

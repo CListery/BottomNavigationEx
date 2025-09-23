@@ -20,8 +20,8 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
         testInstrumentationRunner = "androidx.test.ext.junit.runners.AndroidJUnit4"
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     packagingOptions {
         resources {
@@ -54,6 +54,6 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }

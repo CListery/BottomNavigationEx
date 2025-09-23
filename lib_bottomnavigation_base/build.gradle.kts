@@ -22,6 +22,9 @@ dependencies {
     // compileOnly(libs.material190)
     // compileOnly(libs.material1100)
 }
+android {
+    namespace = "com.yh.bottomnavigation_base"
+}
 
 afterEvaluate {
     publishing {

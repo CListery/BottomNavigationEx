@@ -15,6 +15,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
     <com.yh.bottomnavigationex.BottomNavigationViewEx
         android:id="@+id/bnve"
         style="@style/bnve_primary_bg"

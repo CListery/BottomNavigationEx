@@ -5,13 +5,16 @@ plugins {
 }
 
 android {
+    val groupName: String by project
+    val artifactName: String by project
+
+    this.namespace = "${groupName}.${artifactName}.demo"
+
     defaultConfig {
-        val groupName: String by project
-        val artifactName: String by project
         val targetSdkName: String by project
         val versionName: String by project
         val versionCode: String by project
-        
+
         this.applicationId = "${groupName}.${artifactName}.demo"
         this.targetSdk = targetSdkName.toInt()
         this.versionName = versionName

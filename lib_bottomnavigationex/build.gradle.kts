@@ -20,6 +20,10 @@ dependencies {
     compileOnly(project(mapOf("path" to ":lib_bottomnavigation_19x")))
     compileOnly(project(mapOf("path" to ":lib_bottomnavigation_110x")))
 }
+android {
+    namespace = "com.yh.bottomnavigationex"
+    group = "com.google.android.material"
+}
 
 afterEvaluate {
     publishing {

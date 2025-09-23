@@ -14,6 +14,9 @@ dependencies {
     api(project(mapOf("path" to ":lib_bottomnavigation_base")))
     api(libs.material1100)
 }
+android {
+    namespace = "com.google.android.material"
+}
 
 afterEvaluate {
     publishing {

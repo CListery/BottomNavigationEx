@@ -10,6 +10,7 @@ import com.yh.bottomnavigationex.demo.features.badgeview.BadgeViewActivity
 import com.yh.bottomnavigationex.demo.features.centerfab.CenterFabActivity
 import com.yh.bottomnavigationex.demo.features.dynamic.DynamicMenuAct
 import com.yh.bottomnavigationex.demo.features.example.ExampleAct
+import com.yh.bottomnavigationex.demo.features.material.MaterialDefaultAct
 import com.yh.bottomnavigationex.demo.features.setupwithviewpager.SetupWithViewPagerActivity
 import com.yh.bottomnavigationex.demo.features.style.StyleActivity
 import com.yh.bottomnavigationex.demo.features.viewpager.WithViewPager2Act
@@ -38,6 +39,7 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
         btnBadgeView.openAct<BadgeViewActivity>()
         btnCenterFab.openAct<CenterFabActivity>()
         btnChangeableSize.openAct<DynamicMenuAct>()
+        btnMaterial.openAct<MaterialDefaultAct>()
     }
     
     private inline fun <reified T> View.openAct() {

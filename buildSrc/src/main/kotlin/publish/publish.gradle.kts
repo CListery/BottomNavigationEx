@@ -6,9 +6,13 @@ plugins {
 
 val isReleaseVersion get() = !version.toString().endsWith("SNAPSHOT")
 
-val androidSourcesJar by tasks.register<Jar>("androidSourcesJar") {
-    from(android.sourceSets.flatMap { it.java.srcDirs })
-    archiveClassifier.set("sources")
+android {
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 publishing {
@@ -96,7 +100,6 @@ publishing {
                 developerConnection.set(pomScmDevConnection)
             }
         }
-        artifact(androidSourcesJar)
     }
 }
 

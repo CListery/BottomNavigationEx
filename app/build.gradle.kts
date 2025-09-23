@@ -1,5 +1,3 @@
-import com.clistery.src.*
-
 plugins {
     id("app")
 }

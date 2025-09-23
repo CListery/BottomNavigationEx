@@ -7,6 +7,7 @@ import android.graphics.Canvas
 import android.graphics.Typeface
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -19,8 +20,8 @@ import com.google.android.material.bottomnavigation.*
 import com.yh.bottomnavigation_base.IBottomNavigationEx
 import com.yh.bottomnavigation_base.IMenuDoubleClickListener
 import com.yh.bottomnavigation_base.IMenuListener
-import com.yh.bottomnavigation_base.ext.dp2px
 import com.yh.bottomnavigation_base.internal.InnerListener
+import kotlin.math.max
 
 class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, BottomNavigationMenuView, BottomNavigationItemView> {
 
@@ -61,6 +62,7 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        Log.i("BNEx", "onAttachedToWindow")
         inflate()
     }
 
@@ -81,31 +83,60 @@ class BottomNavigationViewEx : View, IBottomNavigationEx<BottomNavigationView, B
     
     private fun replaceSelfWithView(parent: ViewGroup) {
         val index = parent.indexOfChild(this)
+        Log.i("BNEx", "replaceSelfWithView: $index")
         if (-1 == index) {
             return
         }
         parent.removeViewInLayout(this)
-        val itemHeight = when (MaterialUtils.version) {
-            MaterialUtils.MaterialVersion.V_1_5_X,
-            MaterialUtils.MaterialVersion.V_1_6_X,
-            MaterialUtils.MaterialVersion.V_1_7_X,
-            MaterialUtils.MaterialVersion.V_1_8_X,
-            MaterialUtils.MaterialVersion.V_1_9_X,
-            MaterialUtils.MaterialVersion.V_1_10_X,
-            -> context.dp2px(56)
-            else -> -2
-        }
-        val layoutParams = layoutParams ?: ViewGroup.LayoutParams(-1, itemHeight)
-        layoutParams.height = if (layoutParams.height > 0) {
-            layoutParams.height
-        } else {
-            itemHeight
-        }
+
+        val layoutParams = layoutParams ?: ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.height = max(layoutParams.height, ViewGroup.LayoutParams.WRAP_CONTENT)
+
         parent.addView(realView, index, layoutParams)
+
         realView.layoutParams = layoutParams
+
+//        ViewCompat.setOnApplyWindowInsetsListener(realView) { v, insets ->
+//            insets.systemWindowInsetBottom
+//            val i = insets.getInsets(
+//                WindowInsetsCompat.Type.systemBars() + WindowInsetsCompat.Type.displayCutout()
+//            )
+//
+//            Log.i("BNEx", "insets: $i")
+//            Log.i("BNEx", "realView.height: ${realView.height}")
+//
+//            realView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+//                this.height = max(realView.height, itemHeight + i.bottom)
+//            }
+//            realView.updatePadding(bottom = i.bottom)
+//            WindowInsetsCompat.CONSUMED
+//        }
+//        realView.requestApplyInsetsWhenAttached()
     }
 
+//    private fun View.requestApplyInsetsWhenAttached() {
+//        if (ViewCompat.isAttachedToWindow(this)) {
+//            // We're already attached, just request as normal
+//            ViewCompat.requestApplyInsets(this)
+//        } else {
+//            // We're not attached to the hierarchy, add a listener to
+//            // request when we are
+//            addOnAttachStateChangeListener(object : OnAttachStateChangeListener {
+//                override fun onViewAttachedToWindow(v: View) {
+//                    v.removeOnAttachStateChangeListener(this)
+//                    ViewCompat.requestApplyInsets(this@requestApplyInsetsWhenAttached)
+//                }
+//
+//                override fun onViewDetachedFromWindow(v: View) = Unit
+//            })
+//        }
+//    }
+
     private fun inflate() {
+        Log.i("BNEx", "inflate: $isLoaded")
         removeCallbacks(inflateRunnable)
         if (isLoaded) {
             return

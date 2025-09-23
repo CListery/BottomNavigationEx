@@ -155,6 +155,10 @@
     }
     ```
 
+- 关于支持 Android 15 `Edge-To-Edge`
+    - [在视图中以无边框方式显示内容](https://developer.android.com/develop/ui/views/layout/edge-to-edge)
+    - [应对 Android 15 强制执行的无边框措施](https://developer.android.com/codelabs/edge-to-edge)
+
 - 通过 getRealView 获取到原始 BottomNavigationView 的用法请参考[官方文档](https://developer.android.com/reference/com/google/android/material/bottomnavigation/BottomNavigationView)
 
 - 其他更多的用法，请参考demo。
